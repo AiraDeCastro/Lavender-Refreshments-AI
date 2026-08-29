@@ -1,0 +1,6 @@
+# PLACEHOLDER CONTENT. This one sample entry exists only to prove the schema works —
+# it is not real. Replace entirely once real Purple House photography is available
+# (see TASKS.md, milestone M1).
+- id: sample-amenity
+  title: 'Sample Space'
+  caption: 'Placeholder caption — replace with a real caption describing this area.'

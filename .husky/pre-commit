@@ -1,0 +1,18 @@
+set -e
+
+echo "Pre-commit: linting..."
+npm run lint
+
+echo "Pre-commit: running tests..."
+npm test
+
+echo "Pre-commit: building..."
+npm run build
+
+echo "Pre-commit: checking dependency tree..."
+npm ls
+
+echo "Pre-commit: auditing dependencies for known vulnerabilities..."
+npm audit --audit-level=high
+
+echo "Pre-commit checks passed."

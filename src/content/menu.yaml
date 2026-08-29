@@ -1,0 +1,8 @@
+# PLACEHOLDER CONTENT. This one sample item exists only to prove the schema works —
+# it is not a real menu item. Replace entirely once the owner provides the real menu
+# (see TASKS.md, milestone M1). Prices are in Philippine pesos (₱).
+- id: sample-item
+  category: 'Sample Category'
+  name: 'Sample Menu Item'
+  description: 'Placeholder description — replace with the real dish description.'
+  price: 150
