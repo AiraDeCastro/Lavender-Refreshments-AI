@@ -173,4 +173,16 @@ completes meaningful work, don't rewrite history in it.
   `https://lavender-refreshments-ai.airanicoledecastro9.workers.dev/` (a `workers.dev`
   address rather than `pages.dev`, same Pages product). **M0 is now fully complete.**
   Deliberately not pointing the real domain at this project yet — that's an M4 step,
-  once there's real content to show.
+  once there's real content to show. Pushed all of the above (commit `13dee5c`).
+  Started M2: brand color tokens (`brand-50`…`brand-950`, aliasing the confirmed
+  palette) and typography (Plus Jakarta Sans, reused from the live site) added to
+  `src/styles/global.css`. Built mobile mockups for Home, Menu, Order, and a shared
+  Nav/Footer as a design canvas for the owner to react to — see TASKS.md M2 for the
+  link. Iterated with the owner on the canvas: fixed the nav/footer logo (was cropped
+  and, once corrected, invisible against the dark footer — made a white version of the
+  mark for that use instead of changing the footer's brand color), resized it down
+  twice per feedback, and changed the footer's Facebook line to "Message Us on
+  Facebook". Owner also supplied a true transparent-background logo file
+  (`LR_Logo_Transparent.png`, added to `public/`) — pushed together with the design
+  tokens (commit `7ac6058`). Amenities and Our Story pages not designed yet; no desktop
+  layout considered yet either.

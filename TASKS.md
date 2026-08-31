@@ -86,15 +86,33 @@ build real pages against — don't let this stall M0.
 
 ## M2 — Design
 
-- [ ] Set purple/lavender color tokens in the Tailwind config
-- [ ] Choose display + body typefaces, define the type scale
-- [ ] Design Home — hero, primary CTAs, quick hours/location/FB link
-- [ ] Design Menu — category layout, item card
-- [ ] Design Amenities/The Space — gallery layout and captions
-- [ ] Design Our Story — narrative or timeline layout
-- [ ] Design the Order form — fields, validation states, confirmation screen
-- [ ] Design shared Nav and Footer
-- [ ] Mobile-first responsive pass across all five pages
+- [x] Set purple/lavender color tokens in the Tailwind config — `brand-50`…`brand-950`
+      added to the `@theme` block in `src/styles/global.css`, aliasing the confirmed
+      real palette (matches Tailwind's stock violet scale value-for-value)
+- [x] Choose display + body typefaces, define the type scale — reusing the live site's
+      existing typeface (Plus Jakarta Sans, one family for both display and body,
+      varying weight/italic for hierarchy) rather than picking something new; loaded
+      via Google Fonts in `global.css`. Type scale: Tailwind's default scale, no custom
+      sizes needed for a site this size
+- [ ] Design Home — hero, primary CTAs, quick hours/location/FB link — mobile mockup
+      drafted and reviewed with the owner in a design canvas (logo sizing/contrast and
+      footer copy already iterated on); not yet signed off as final
+- [ ] Design Menu — category layout, item card — mockup drafted in the same canvas,
+      using the real sample items and showing the "Ask staff" price style
+- [ ] Design Amenities/The Space — gallery layout and captions — not started
+- [ ] Design Our Story — narrative or timeline layout — not started (blocked on the
+      founder write-up from M1 anyway)
+- [ ] Design the Order form — fields, validation states, confirmation screen — fields
+      and a Pickup/Delivery toggle mocked up; no confirmation-screen mockup yet
+- [ ] Design shared Nav and Footer — mocked up incl. a mobile-menu-open state; iterated
+      on logo size/contrast per owner feedback
+- [ ] Mobile-first responsive pass across all five pages — mockups so far are phone-width
+      only; no desktop layout or Amenities/Story pages designed yet
+
+**Where to pick this back up:** the design canvas (Home, Menu, Order, Nav, Footer) is at
+https://claude.ai/code/artifact/c68574ee-16df-49ab-aa15-96a3cf060587 — get the owner's
+sign-off on those before designing Amenities/Story, and decide whether a desktop layout
+is in scope for v1 or a later pass.
 
 ## M3 — Build
 
