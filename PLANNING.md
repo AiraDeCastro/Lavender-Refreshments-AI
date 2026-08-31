@@ -28,7 +28,7 @@ Content (menu, story, amenities, hours)
   Astro build (SSG)
         │  produces static HTML/CSS + minimal JS islands
         ▼
-   CDN hosting (Netlify)
+   CDN hosting (Cloudflare Pages)
         │
         ▼
      Visitor's phone
@@ -41,7 +41,7 @@ Content (menu, story, amenities, hours)
 ```
 
 If the order flow later moves to PRD Option B (Messenger Send API), that adds exactly
-one serverless function (Netlify Functions) that receives the form POST and calls the
+one serverless function (a Cloudflare Pages Function) that receives the form POST and calls the
 Messenger Platform API — everything else in this diagram is unchanged. Don't build that
 function until the user asks for it; see [CLAUDE.md](CLAUDE.md).
 
@@ -81,8 +81,8 @@ appropriate for update frequency this low, and keeps hosting free-tier-friendly.
 | Content                    | **Markdown/YAML files via Astro content collections**                        | No CMS server to run; menu/story/amenities edits are just file edits. Owner-editing story below.                                                               |
 | Images                     | **astro:assets** built-in pipeline                                           | Automatic resizing/compression — load speed on mid-tier connections was called out explicitly as a non-functional requirement.                                 |
 | Order flow (v1)            | **Client-side only** — builds an `m.me/<page>?text=...` link from form input | Matches PRD Option A: no backend, no Meta App Review needed to ship.                                                                                           |
-| Order flow (v1.1, not yet) | **Netlify Functions + Messenger Send API**                                   | Only once Option B is explicitly requested; needs a Meta App and Page Messaging permission.                                                                    |
-| Hosting                    | **Netlify**                                                                  | Free tier covers this site's traffic, git-push-to-deploy, and (if adopted) pairs natively with Netlify Identity + Git Gateway for owner content editing.       |
+| Order flow (v1.1, not yet) | **Cloudflare Pages Functions + Messenger Send API**                          | Only once Option B is explicitly requested; needs a Meta App and Page Messaging permission.                                                                    |
+| Hosting                    | **Cloudflare Pages**                                                         | Owner already has a Cloudflare account and the live domain (`lavenderrefreshments.com`) on it — free tier, git-push-to-deploy, DNS and hosting in one place.   |
 | Version control            | **Git / GitHub**                                                             | Repo already exists: `AiraDeCastro/Lavender-Refreshments-AI`.                                                                                                  |
 
 ### Owner content-editing — open decision
@@ -93,9 +93,9 @@ answered:
 - **Git-only editing** — owner (or whoever helps them) edits the YAML/Markdown files
   directly and pushes. Zero extra tooling, but requires someone comfortable with git.
 - **Decap CMS** (git-backed, free, no database) — gives a simple form UI over the same
-  content files, deployable alongside Netlify Identity + Git Gateway with no separate
-  backend to run. Worth adding only if the owner will actually be the one editing
-  content day-to-day.
+  content files. Netlify Identity isn't available on Cloudflare Pages, so this would
+  need a different login backend (e.g. Decap's GitHub backend, or Cloudflare Access) —
+  worth adding only if the owner will actually be the one editing content day-to-day.
 
 Default to git-only for the v1 build; don't add Decap CMS until the user asks for it.
 
@@ -110,10 +110,8 @@ Default to git-only for the v1 build; don't add Decap CMS until the user asks fo
 
 **Hosting & deployment**
 
-- Netlify account (or equivalent static host, if the user prefers Vercel/Cloudflare
-  Pages — swap freely, nothing above is Netlify-specific except the optional Decap CMS
-  pairing)
-- A domain name — still an open question per [CLAUDE.md](CLAUDE.md)
+- Cloudflare account (confirmed — owner already has one, with the live domain on it)
+- Domain: `lavenderrefreshments.com`, already registered and live on Cloudflare
 
 **Content & assets**
 
@@ -131,6 +129,6 @@ Default to git-only for the v1 build; don't add Decap CMS until the user asks fo
 
 **Optional, not required for v1**
 
-- Decap CMS + Netlify Identity, if owner-direct editing is wanted
+- Decap CMS (with a non-Netlify login backend), if owner-direct editing is wanted
 - A privacy-friendly analytics tool (e.g. Plausible or Cloudflare Web Analytics) to
   track the success metrics from the PRD (menu engagement, order-form completion)

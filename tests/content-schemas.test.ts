@@ -37,6 +37,28 @@ describe('menuItemSchema', () => {
 		});
 		expect(result.success).toBe(false);
 	});
+
+	it('accepts "Ask staff" as a price for variable-priced items', () => {
+		const result = menuItemSchema.safeParse({
+			id: 'sample-item',
+			category: 'Bilao',
+			name: 'Sample Bilao',
+			description: 'A short placeholder description.',
+			price: 'Ask staff',
+		});
+		expect(result.success).toBe(true);
+	});
+
+	it('rejects an arbitrary price string other than "Ask staff"', () => {
+		const result = menuItemSchema.safeParse({
+			id: 'sample-item',
+			category: 'Mains',
+			name: 'Sample Dish',
+			description: 'A short placeholder description.',
+			price: 'Free',
+		});
+		expect(result.success).toBe(false);
+	});
 });
 
 describe('amenitySchema', () => {

@@ -26,21 +26,56 @@ started.
       commit _(discovered/requested before the first push)_
 - [x] Enforce Conventional Commits via commitlint (`.husky/commit-msg`)
       _(discovered/requested before the first push)_
-- [ ] Push the scaffold to `AiraDeCastro/Lavender-Refreshments-AI`
-- [ ] Connect the repo to Netlify (or chosen host) and confirm a blank deploy goes live
-      end-to-end before writing real pages
+- [x] Push the scaffold to `AiraDeCastro/Lavender-Refreshments-AI` — already on `main`
+      as of the previous session (commit `f78fe22`); verified by cloning the repo fresh
+      and confirming it matches
+- [x] Connect the repo to Cloudflare Pages and confirm a blank deploy goes live
+      end-to-end — owner connected the repo 2026-08-30; verified live at
+      `https://lavender-refreshments-ai.airanicoledecastro9.workers.dev/` (Cloudflare
+      served this under a `workers.dev` subdomain rather than `pages.dev` — same
+      Pages product, no functional difference), page renders with no console errors.
+      Every future push to `main` will auto-redeploy to this same address. **Not yet
+      done, deliberately:** pointing the real `lavenderrefreshments.com` domain at
+      this project — that's an M4 (soft launch) step, since the real domain is still
+      serving the current live site and shouldn't be swapped until this one has real
+      content
 
 ## M1 — Content & assets _(depends on the restaurant owner, not on code)_
 
-- [ ] Get the final menu: categories, item names, prices, photos
-- [ ] Get Purple House photography — exterior, interior, seating areas
-- [ ] Get the founder/story write-up and accompanying photos
-- [ ] Confirm hours, address, phone number, and the Facebook Page URL/handle
-- [ ] Confirm existing logo/brand colors, or greenlight a purple palette built from
-      scratch
+- [x] Get the final menu: categories, item names, prices, photos — full menu (12
+      categories, 72 items) provided by the owner 2026-08-30, loaded into
+      `src/content/menu.yaml`. Bilao and Beer items are priced "Ask staff" (no fixed
+      price) rather than a peso amount — extended `menuItemSchema` to accept that as a
+      valid price, with tests. Bilao items reference photo filenames the owner gave
+      (e.g. `/bilao-pancit.jpg`) — those exact files landed in `public/` 2026-08-30, so
+      every Bilao item now has a matching real photo on disk
+- [x] Get Purple House photography — exterior, interior, seating areas — owner added
+      real photos directly to `public/` 2026-08-30: 35 gallery photos (`gallery-*`), 7
+      food photos (`food-*`), 5 logo variants (`LR_Logo1–5.png`), and an owner/founder
+      photo (`Owner-Mother.JPG`). Not yet sorted into `amenities.yaml` entries — that
+      needs a caption per photo, which is content the owner should provide when
+      convenient, not urgent
+- [ ] Get the founder/story write-up and accompanying photos — write-up still coming in
+      a future session; a candidate photo (`Owner-Mother.JPG`) already exists in
+      `public/`
+- [x] Confirm hours, address, phone number, and the Facebook Page URL/handle — Facebook
+      **Page** confirmed 2026-08-30: https://www.facebook.com/profile.php?id=100076299965269
+      ("Lavender refreshment", verified as a real Page, not the Group linked from the
+      live site) — phone matches at +63 907 277 1354, so `src/data/site.ts` now points
+      at the Page instead of the Group. Hours conflict (website said Mon–Sun
+      7:30am–6:30pm, Facebook Page said Tue–Sun 8am–7pm with a call-ahead note for
+      Monday) resolved 2026-08-30 — owner confirmed the Facebook Page version is
+      current; `site.ts` updated, to be revisited later per the owner
+- [x] Confirm existing logo/brand colors, or greenlight a purple palette built from
+      scratch — confirmed from the live site: existing logo (`LR_Logo5.png`) and a
+      purple/lavender palette already in use (button purple `#7C3AED`, dark section
+      `#2E1065`, soft pink-to-lavender gradient background) — matches Tailwind's stock
+      violet scale closely, reuse rather than inventing a new palette in M2
 - [ ] Resolve the open questions from the PRD: pickup vs. delivery (and fee/area),
       payment field (cash-only vs. GCash reference), Option A vs. B for the order flow,
-      domain name, and language mix
+      ~~domain name~~, and language mix
+      _(domain resolved: `lavenderrefreshments.com`, already live on the owner's
+      Cloudflare account)_
 
 **Blocks:** M2 and M3 need at least placeholder-quality answers here to design and
 build real pages against — don't let this stall M0.

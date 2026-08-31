@@ -82,11 +82,17 @@ scaffold pages with clearly-marked placeholder content while real content is pen
 
 ## Open decisions (confirm with the user before building around them)
 
-- Exact Facebook Page URL/handle
 - Pickup only vs. delivery too, and delivery area/fee if so
-- Whether existing brand assets (logo, official colors) exist
 - Payment handling: cash only, or a GCash/e-wallet reference field on the order form
-- Domain name / hosting target
+
+Resolved: existing brand assets confirmed (logo + purple/lavender palette already live
+at lavenderrefreshments.com, see TASKS.md M1). Domain/hosting resolved: Cloudflare
+Pages, domain `lavenderrefreshments.com` already registered and live on the owner's
+Cloudflare account. Facebook Page confirmed:
+https://www.facebook.com/profile.php?id=100076299965269 ("Lavender refreshment") — the
+live site's only link was a Group, which can't receive `m.me` deep links; the Page is
+what the Option A order flow will use. Full menu (72 items) confirmed and loaded, see
+TASKS.md M1.
 
 ## Astro dev workflow
 
@@ -145,3 +151,26 @@ completes meaningful work, don't rewrite history in it.
   actually block a broken commit, and Conventional Commits enforcement via commitlint
   (`.husky/commit-msg`). No page content, layout, or components built yet — still just
   the Astro starter's `index.astro`.
+- **2026-08-30** — Repo cloned to a new machine, dependencies installed, dev server
+  verified working. Hosting decision made: owner has Cloudflare (not Netlify), with
+  `lavenderrefreshments.com` already registered and live there — PLANNING.md, TASKS.md,
+  CLAUDE.md updated to reflect Cloudflare Pages as the host. Pulled real content from
+  the live site for M1: hours, address, phone, email, existing logo, and the live
+  purple/lavender palette (close to Tailwind's stock violet scale) — see TASKS.md M1.
+  Flagged that the live site's only Facebook link is a Group, not a Page, which blocks
+  the Option A order flow until resolved. Menu items/prices and the founder story still
+  need to come from the owner; Purple House/food photography is being sent via chat.
+  Owner then confirmed the real Facebook Page
+  (facebook.com/profile.php?id=100076299965269) and supplied the full 72-item menu,
+  now loaded into `src/content/menu.yaml` (schema extended to allow "Ask staff" pricing
+  for Bilao/Beer items, with tests). Owner picked the Facebook Page's hours (Tue–Sun
+  8am–7pm, call ahead Monday) as current over the website's conflicting Mon–Sun
+  7:30am–6:30pm — `site.ts` updated. Owner added real photography directly to
+  `public/`: 35 gallery photos, 7 food photos, 5 logo variants, the 7 Bilao photos
+  referenced by the menu, and a candidate owner/founder photo — not yet sorted into
+  `amenities.yaml` (needs captions, low priority). Owner connected the repo to
+  Cloudflare Pages; verified live end-to-end at
+  `https://lavender-refreshments-ai.airanicoledecastro9.workers.dev/` (a `workers.dev`
+  address rather than `pages.dev`, same Pages product). **M0 is now fully complete.**
+  Deliberately not pointing the real domain at this project yet — that's an M4 step,
+  once there's real content to show.

@@ -5,7 +5,7 @@ export const menuItemSchema = z.object({
 	category: z.string(),
 	name: z.string(),
 	description: z.string(),
-	price: z.number(),
+	price: z.union([z.number(), z.literal('Ask staff')]),
 	photo: z.string().optional(),
 });
 

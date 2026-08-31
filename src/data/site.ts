@@ -1,10 +1,10 @@
-// PLACEHOLDER CONTENT. Every field below needs a real answer from the restaurant
-// owner before launch (see TASKS.md, milestone M1) — none of this is final.
+// Confirmed from lavenderrefreshments.com and the restaurant's Facebook Page
+// (see TASKS.md, milestone M1).
 export const site = {
 	name: 'Lavender Refreshments',
-	tagline: 'PLACEHOLDER — replace with the real tagline',
-	hours: 'PLACEHOLDER — confirm real hours with the owner',
+	tagline: 'Where Every Petal Tells a Story',
+	hours: 'Tue–Sun, 8am–7pm (call ahead for Monday)',
 	address: 'Purple House, Culasi, Ajuy, Iloilo, Philippines',
-	phone: null as string | null,
-	facebookUrl: null as string | null,
+	phone: '+63 907 277 1354' as string | null,
+	facebookUrl: 'https://www.facebook.com/profile.php?id=100076299965269' as string | null,
 } as const;
