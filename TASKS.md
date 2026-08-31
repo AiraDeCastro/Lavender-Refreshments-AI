@@ -70,7 +70,11 @@ started.
       scratch — confirmed from the live site: existing logo (`LR_Logo5.png`) and a
       purple/lavender palette already in use (button purple `#7C3AED`, dark section
       `#2E1065`, soft pink-to-lavender gradient background) — matches Tailwind's stock
-      violet scale closely, reuse rather than inventing a new palette in M2
+      violet scale closely, reuse rather than inventing a new palette in M2.
+      _(2026-08-30: owner also provided `LR_Logo_Transparent.png`, a true
+      transparent-background version of the same logo — use this one over the
+      lavender-boxed variants once real pages are built, since it sits cleanly on any
+      background color, e.g. the dark footer)_
 - [ ] Resolve the open questions from the PRD: pickup vs. delivery (and fee/area),
       payment field (cash-only vs. GCash reference), Option A vs. B for the order flow,
       ~~domain name~~, and language mix

@@ -1,1 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap');
 @import 'tailwindcss';
+
+/*
+ * Brand tokens, reused from the live site (lavenderrefreshments.com) rather than
+ * invented fresh — see TASKS.md milestone M2. The brand-* scale matches Tailwind's
+ * stock violet palette value-for-value; it's aliased under "brand" so intent is
+ * explicit in markup (bg-brand-600) instead of an arbitrary color name.
+ */
+@theme {
+	--font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+	--color-brand-50: #f5f3ff;
+	--color-brand-100: #ede9fe;
+	--color-brand-200: #ddd6fe;
+	--color-brand-300: #c4b5fd;
+	--color-brand-400: #a78bfa;
+	--color-brand-500: #8b5cf6;
+	--color-brand-600: #7c3aed;
+	--color-brand-700: #6d28d9;
+	--color-brand-800: #5b21b6;
+	--color-brand-900: #4c1d95;
+	--color-brand-950: #2e1065;
+}
