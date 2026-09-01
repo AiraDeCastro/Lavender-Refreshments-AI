@@ -253,3 +253,23 @@ completes meaningful work, don't rewrite history in it.
   terminal/CLI access — walked through the Cloudflare dashboard UI (deployments → build
   log → settings) step-by-step to get the log text needed to find the real cause,
   rather than guessing at fixes blind.
+
+  Started M4 (QA): did a cross-device emulated pass (mobile + desktop) across all 5
+  pages, and a real end-to-end order test — filled out the Order form and submitted it
+  for real, confirming the `m.me` link redirects to an actual Messenger thread tied to
+  the real Page. Link-checked the whole site and found a real gap: the phone number and
+  address were plain unlinked text — added a real `tel:` link and a Google Maps link,
+  both derived from `site.ts` so they can't drift from the real contact info, with
+  tests. Proofread all content for leftover placeholders — clean except Our Story.
+
+  Owner then provided the real founder write-up (the full story: growing up near
+  Culasi Bridge, her grandmother's love of purple, her grandfather's injury and the
+  promise it inspired, Purple House's 2015 founding and growth into a four-bedroom
+  home with Airbnb rooms, the refreshments business, and a clothing shop) plus a new
+  real photo of herself, replacing both the placeholder text and the earlier candidate
+  London photo. Rewrote `story.astro`'s styling too — it was built for short boxed
+  placeholder callouts (dashed borders, italic), which would have looked wrong for a
+  full flowing narrative, so switched to normal long-form article typesetting.
+  Verified the real story renders correctly on both mobile and desktop before
+  committing. This closes the last open M1 content item and the M3/M4 notes that
+  tracked it.

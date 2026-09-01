@@ -36,7 +36,7 @@ const founderPhoto = story.data.coverPhoto ? getPhoto(story.data.coverPhoto) : n
 					/>
 				)
 			}
-			<div class="story-content flex flex-col gap-6 px-6 py-8 lg:px-0 lg:py-0">
+			<div class="story-content px-6 py-8 lg:px-0 lg:py-0">
 				<Content />
 			</div>
 		</div>
@@ -62,15 +62,18 @@ const founderPhoto = story.data.coverPhoto ? getPhoto(story.data.coverPhoto) : n
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--color-brand-600);
+		margin: 0 0 12px;
+	}
+	.story-content :global(h2:not(:first-child)) {
+		margin-top: 40px;
 	}
 	.story-content :global(p) {
-		padding: 14px 16px;
-		border: 1.5px dashed var(--color-brand-300);
-		border-radius: 12px;
-		font-size: 13.5px;
-		font-style: italic;
-		color: var(--color-brand-600);
-		line-height: 1.6;
-		margin-top: 8px;
+		font-size: 15px;
+		color: var(--color-brand-900);
+		line-height: 1.75;
+		margin: 0 0 16px;
+	}
+	.story-content :global(p:last-child) {
+		margin-bottom: 0;
 	}
 </style>

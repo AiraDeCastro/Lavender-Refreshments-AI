@@ -55,9 +55,13 @@ started.
       photo (`Owner-Mother.JPG`). Not yet sorted into `amenities.yaml` entries — that
       needs a caption per photo, which is content the owner should provide when
       convenient, not urgent
-- [ ] Get the founder/story write-up and accompanying photos — write-up still coming in
-      a future session; a candidate photo (`Owner-Mother.JPG`) already exists in
-      `public/`
+- [x] Get the founder/story write-up and accompanying photos — real write-up provided
+      by the owner 2026-09-01: the full story of Culasi Bridge, her grandmother's love
+      of purple, her grandfather's injury and the promise it inspired, and Purple
+      House's founding in 2015 through today (Airbnb rooms, the refreshments business,
+      the clothing shop, six staff). Loaded into `src/content/story/story.md`,
+      replacing the placeholder text. A new real photo of the owner also provided
+      (`founder-photo.jpg`), replacing the earlier candidate London photo
 - [x] Confirm hours, address, phone number, and the Facebook Page URL/handle — Facebook
       **Page** confirmed 2026-08-30: https://www.facebook.com/profile.php?id=100076299965269
       ("Lavender refreshment", verified as a real Page, not the Group linked from the
@@ -144,8 +148,9 @@ form's confirmation screen has no mockup yet.
       in browser verification), Bilao rendered as a photo-forward stacked-card variant
       of `MenuCard` instead of a second component
 - [x] Build Amenities gallery + `GalleryItem` component — all 8 real captioned photos
-- [x] Build Our Story page — renders the real markdown content (including the
-      still-placeholder narrative text) alongside the founder photo
+- [x] Build Our Story page — renders the real markdown content alongside the founder
+      photo; narrative was placeholder at first build, replaced with the real
+      founder write-up 2026-09-01 (see M1)
 - [x] Build the Order form (client-side state and validation) — add/remove items with
       quantity, Pickup/Delivery toggle, conditionally-required delivery address, inline
       validation errors, live order summary panel; verified interactively in-browser
@@ -178,10 +183,11 @@ form's confirmation screen has no mockup yet.
 **M3 is functionally complete as of 2026-09-01** — the site is real and working, not a
 mockup, at `http://localhost:4321` in dev and live at
 `https://lavender-refreshments-ai.airanicoledecastro9.workers.dev/` once pushed. Two
-things still trace back to open M1 items rather than M3 itself: the Our Story page's
-narrative text is real placeholder copy (not final), and the "hours" business decisions
-(pickup/delivery, payment field) haven't changed anything here since the Order form
-doesn't reference either yet. Not yet done: nothing blocking — M4 (QA/launch) is next.
+things still traced back to open M1 items rather than M3 itself: the Our Story page's
+narrative text was placeholder copy (now resolved — see M1, 2026-09-01), and the
+"hours" business decisions (pickup/delivery, payment field) haven't changed anything
+here since the Order form doesn't reference either yet. Not yet done: nothing
+blocking — M4 (QA/launch) is next.
 
 **Found and fixed a real production bug the same day:** every photo on the live site
 was 404ing right after the M3 push, even though the local build and dev server were
@@ -230,8 +236,9 @@ instead of letting deploys fetch an unpinned version fresh via `npx` each time.
       pages return 200), the Facebook Page link, and the Maps link all resolve
 - [x] Proofread all content against the owner-provided final copy (no leftover
       placeholder menu items, prices, or story text) — scanned the whole codebase for
-      leftover placeholder/TODO markers; only the intentional, clearly-marked Our Story
-      placeholder remains (expected, tracked separately under M1)
+      leftover placeholder/TODO markers as of 2026-09-01, before the real Our Story
+      write-up arrived (that placeholder was the only one found, and is now resolved
+      — see M1); nothing else outstanding
 - [ ] Point the confirmed domain at the host, verify SSL — **needs the owner**: this
       swaps their currently-live site for this one, so it shouldn't happen without them
       present/aware
