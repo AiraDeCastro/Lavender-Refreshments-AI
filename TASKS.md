@@ -81,11 +81,13 @@ started.
       transparent-background version of the same logo — use this one over the
       lavender-boxed variants once real pages are built, since it sits cleanly on any
       background color, e.g. the dark footer)_
-- [ ] Resolve the open questions from the PRD: pickup vs. delivery (and fee/area),
-      payment field (cash-only vs. GCash reference), Option A vs. B for the order flow,
-      ~~domain name~~, and language mix
+- [ ] Resolve the open questions from the PRD: ~~pickup vs. delivery~~, payment field
+      (cash-only vs. GCash reference), Option A vs. B for the order flow, ~~domain
+      name~~, and language mix
       _(domain resolved: `lavenderrefreshments.com`, already live on the owner's
-      Cloudflare account)_
+      Cloudflare account. Pickup/delivery resolved 2026-09-01: **Pickup and Dine-in
+      only, no delivery** — Order form and `src/utils/order.ts` updated, delivery
+      address field/logic removed entirely)_
 
 **Blocks:** M2 and M3 need at least placeholder-quality answers here to design and
 build real pages against — don't let this stall M0.

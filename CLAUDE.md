@@ -31,10 +31,11 @@ place orders are actually fulfilled and confirmed. Five pages:
   indoor/outdoor, parking). Captions, not long copy.
 - **Our Story** — founder narrative: who started it, why the Purple House, what the
   name means. Photo-driven.
-- **Order** — form (name, contact, items + quantities from the menu, pickup/delivery,
-  date/time, notes, delivery address if applicable) that hands the order to the
-  restaurant's Facebook Page. See "Order → Facebook" below — this is the one piece with
-  real technical decisions, everything else is static content.
+- **Order** — form (name, contact, items + quantities from the menu, Pickup or Dine-in,
+  date/time, notes) that hands the order to the restaurant's Facebook Page. No delivery
+  — owner confirmed pickup and dine-in only (2026-09-01). See "Order → Facebook" below
+  — this is the one piece with real technical decisions, everything else is static
+  content.
 
 ## Explicitly out of scope for v1
 
@@ -82,9 +83,11 @@ scaffold pages with clearly-marked placeholder content while real content is pen
 
 ## Open decisions (confirm with the user before building around them)
 
-- Pickup only vs. delivery too, and delivery area/fee if so
 - Payment handling: cash only, or a GCash/e-wallet reference field on the order form
 
+Resolved: pickup vs. delivery — owner confirmed 2026-09-01 the restaurant offers
+**Pickup and Dine-in only, no delivery**. The Order form's fulfillment toggle and
+`src/utils/order.ts` were updated accordingly (no delivery address field/logic).
 Resolved: existing brand assets confirmed (logo + purple/lavender palette already live
 at lavenderrefreshments.com, see TASKS.md M1). Domain/hosting resolved: Cloudflare
 Pages, domain `lavenderrefreshments.com` already registered and live on the owner's
@@ -273,3 +276,10 @@ completes meaningful work, don't rewrite history in it.
   Verified the real story renders correctly on both mobile and desktop before
   committing. This closes the last open M1 content item and the M3/M4 notes that
   tracked it.
+
+  Owner also resolved one of the two remaining PRD open questions: **Pickup and
+  Dine-in only, no delivery**. Updated the Order form's fulfillment toggle (Delivery →
+  Dine-in) and removed the delivery-address field and all related logic from
+  `src/utils/order.ts` and the submit handler entirely, rather than leaving unused
+  code around. Only the payment-field question (cash-only vs. GCash reference) and
+  Option A vs. B remain open from the original PRD list.

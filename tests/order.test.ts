@@ -43,17 +43,12 @@ describe('buildOrderMessage', () => {
 		expect(message).toContain('Total: ₱100 + items priced by staff');
 	});
 
-	it('includes the delivery address only when fulfillment is Delivery', () => {
+	it('states the fulfillment type, Pickup or Dine-in', () => {
 		const pickupMessage = buildOrderMessage(baseOrder);
-		expect(pickupMessage).not.toContain('Delivery address');
+		expect(pickupMessage).toContain('Fulfillment: Pickup');
 
-		const deliveryMessage = buildOrderMessage({
-			...baseOrder,
-			fulfillment: 'Delivery',
-			deliveryAddress: '123 Purple St., Culasi, Ajuy',
-		});
-		expect(deliveryMessage).toContain('Fulfillment: Delivery');
-		expect(deliveryMessage).toContain('Delivery address: 123 Purple St., Culasi, Ajuy');
+		const dineInMessage = buildOrderMessage({ ...baseOrder, fulfillment: 'Dine-in' });
+		expect(dineInMessage).toContain('Fulfillment: Dine-in');
 	});
 
 	it('omits optional fields (date, time, notes) when not provided', () => {

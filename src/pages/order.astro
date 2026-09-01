@@ -100,8 +100,8 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 
 				<!-- Fulfillment -->
 				<section class="flex flex-col gap-3.5">
-					<h2 class="text-[13px] font-extrabold tracking-[0.08em] text-brand-600 uppercase">Pickup or Delivery</h2>
-					<div class="flex gap-2.5" role="group" aria-label="Pickup or delivery">
+					<h2 class="text-[13px] font-extrabold tracking-[0.08em] text-brand-600 uppercase">Pickup or Dine-In</h2>
+					<div class="flex gap-2.5" role="group" aria-label="Pickup or dine-in">
 						<button
 							type="button"
 							id="fulfillment-pickup"
@@ -111,24 +111,13 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 						>
 						<button
 							type="button"
-							id="fulfillment-delivery"
+							id="fulfillment-dine-in"
 							aria-pressed="false"
 							class="flex-1 rounded-xl border-[1.5px] border-brand-600 bg-white py-3 text-sm font-bold text-brand-700"
-							>Delivery</button
+							>Dine-In</button
 						>
 					</div>
 					<input type="hidden" id="fulfillment-value" name="fulfillment" value="Pickup" />
-
-					<label id="delivery-address-field" class="hidden flex-col gap-1.5">
-						<span class="text-xs font-bold tracking-wide text-brand-800 uppercase">Delivery Address</span>
-						<textarea
-							id="delivery-address"
-							name="deliveryAddress"
-							rows="2"
-							placeholder="House/lot no., street, barangay"
-							class="rounded-xl border-[1.5px] border-brand-100 px-3.5 py-3 text-[15px] text-brand-950"
-						></textarea>
-					</label>
 				</section>
 
 				<!-- When -->
@@ -217,10 +206,8 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 	const summaryTotalEl = document.getElementById('summary-total');
 
 	const pickupBtn = document.getElementById('fulfillment-pickup');
-	const deliveryBtn = document.getElementById('fulfillment-delivery');
+	const dineInBtn = document.getElementById('fulfillment-dine-in');
 	const fulfillmentValue = document.getElementById('fulfillment-value');
-	const deliveryAddressField = document.getElementById('delivery-address-field');
-	const deliveryAddressInput = document.getElementById('delivery-address');
 
 	const formErrorEl = document.getElementById('form-error');
 	const form = document.getElementById('order-form');
@@ -329,26 +316,22 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 
 	function setFulfillment(value) {
 		fulfillmentValue.value = value;
-		const isDelivery = value === 'Delivery';
+		const isDineIn = value === 'Dine-in';
 
-		pickupBtn.setAttribute('aria-pressed', String(!isDelivery));
-		deliveryBtn.setAttribute('aria-pressed', String(isDelivery));
-		pickupBtn.classList.toggle('bg-brand-600', !isDelivery);
-		pickupBtn.classList.toggle('text-white', !isDelivery);
-		pickupBtn.classList.toggle('bg-white', isDelivery);
-		pickupBtn.classList.toggle('text-brand-700', isDelivery);
-		deliveryBtn.classList.toggle('bg-brand-600', isDelivery);
-		deliveryBtn.classList.toggle('text-white', isDelivery);
-		deliveryBtn.classList.toggle('bg-white', !isDelivery);
-		deliveryBtn.classList.toggle('text-brand-700', !isDelivery);
-
-		deliveryAddressField.classList.toggle('hidden', !isDelivery);
-		deliveryAddressField.classList.toggle('flex', isDelivery);
-		deliveryAddressInput.required = isDelivery;
+		pickupBtn.setAttribute('aria-pressed', String(!isDineIn));
+		dineInBtn.setAttribute('aria-pressed', String(isDineIn));
+		pickupBtn.classList.toggle('bg-brand-600', !isDineIn);
+		pickupBtn.classList.toggle('text-white', !isDineIn);
+		pickupBtn.classList.toggle('bg-white', isDineIn);
+		pickupBtn.classList.toggle('text-brand-700', isDineIn);
+		dineInBtn.classList.toggle('bg-brand-600', isDineIn);
+		dineInBtn.classList.toggle('text-white', isDineIn);
+		dineInBtn.classList.toggle('bg-white', !isDineIn);
+		dineInBtn.classList.toggle('text-brand-700', !isDineIn);
 	}
 
 	pickupBtn.addEventListener('click', () => setFulfillment('Pickup'));
-	deliveryBtn.addEventListener('click', () => setFulfillment('Delivery'));
+	dineInBtn.addEventListener('click', () => setFulfillment('Dine-in'));
 
 	function showError(message) {
 		formErrorEl.textContent = message;
@@ -367,7 +350,6 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 		const name = document.getElementById('customer-name').value.trim();
 		const contact = document.getElementById('customer-contact').value.trim();
 		const fulfillment = fulfillmentValue.value;
-		const deliveryAddress = deliveryAddressInput.value.trim();
 		const date = document.getElementById('order-date').value;
 		const time = document.getElementById('order-time').value;
 		const notes = document.getElementById('order-notes').value.trim();
@@ -380,17 +362,12 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 			showError('Please add at least one item to your order.');
 			return;
 		}
-		if (fulfillment === 'Delivery' && !deliveryAddress) {
-			showError('Please enter a delivery address.');
-			return;
-		}
 
 		const message = buildOrderMessage({
 			name,
 			contact,
 			items: cart,
 			fulfillment,
-			deliveryAddress: fulfillment === 'Delivery' ? deliveryAddress : undefined,
 			date,
 			time,
 			notes,

@@ -8,8 +8,7 @@ export interface OrderDetails {
 	name: string;
 	contact: string;
 	items: OrderLineItem[];
-	fulfillment: 'Pickup' | 'Delivery';
-	deliveryAddress?: string;
+	fulfillment: 'Pickup' | 'Dine-in';
 	date?: string;
 	time?: string;
 	notes?: string;
@@ -37,9 +36,6 @@ export function buildOrderMessage(order: OrderDetails): string {
 
 	lines.push('');
 	lines.push(`Fulfillment: ${order.fulfillment}`);
-	if (order.fulfillment === 'Delivery' && order.deliveryAddress) {
-		lines.push(`Delivery address: ${order.deliveryAddress}`);
-	}
 
 	const when = [order.date, order.time].filter(Boolean).join(' ');
 	if (when) {
