@@ -11,3 +11,8 @@ export const site = {
 	// Order form (PRD Option A) — see CLAUDE.md "Order → Facebook".
 	facebookPageId: '100076299965269',
 } as const;
+
+// Derived link targets — computed from the fields above so they can't drift out of
+// sync with the real phone number/address.
+export const phoneHref = site.phone ? `tel:${site.phone.replace(/\s+/g, '')}` : null;
+export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address)}`;
