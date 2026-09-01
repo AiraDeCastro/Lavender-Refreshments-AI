@@ -183,6 +183,25 @@ narrative text is real placeholder copy (not final), and the "hours" business de
 (pickup/delivery, payment field) haven't changed anything here since the Order form
 doesn't reference either yet. Not yet done: nothing blocking — M4 (QA/launch) is next.
 
+**Found and fixed a real production bug the same day:** every photo on the live site
+was 404ing right after the M3 push, even though the local build and dev server were
+fine. Root cause: the Cloudflare deploy command (`npx wrangler deploy`) had no
+committed Cloudflare config, so Wrangler auto-ran an interactive `astro add cloudflare`
+setup wizard on every deploy (auto-confirmed in CI's non-interactive mode). That wizard
+installs the `@astrojs/cloudflare` adapter, which swaps `astro:assets`' image handling
+over to a Cloudflare Images binding that was never provisioned — every image request
+came back 404. The generated config also got written straight to `.gitignore` each
+time, so it never stuck and the wizard kept re-running on every single deploy. Fixed by
+committing an explicit `wrangler.jsonc` (assets-only: `{ name, compatibility_date,
+assets: { directory: "./dist" } }`, no adapter, no bindings) — this makes Wrangler just
+serve `dist/` as static files, which is what this project actually is (see
+PLANNING.md). Verified with `wrangler deploy --dry-run` locally (clean static asset
+list, "No bindings found") and by checking real image load state
+(`img.naturalWidth`, not just visual screenshots — this sandbox's screenshot tool
+intermittently misses paint frames) on the live site across Home, Menu, Amenities, and
+Our Story after the fix deployed. Also pinned `wrangler` as a real devDependency
+instead of letting deploys fetch an unpinned version fresh via `npx` each time.
+
 ## M4 — QA & soft launch
 
 - [ ] Cross-device pass: iOS Safari, Android Chrome, desktop

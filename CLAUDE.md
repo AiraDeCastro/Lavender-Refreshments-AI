@@ -237,3 +237,19 @@ completes meaningful work, don't rewrite history in it.
   pre-commit gate passed for real. **M3 is functionally complete** — nothing blocking
   M4 next, though the Our Story text is still placeholder copy pending the real
   write-up from M1.
+
+  Then found a real production bug by actually checking the live site (not just local
+  dev) after a follow-up fix: every photo was 404ing live, despite working perfectly
+  locally. Traced it to the Cloudflare deploy command itself — `npx wrangler deploy`
+  with no committed Cloudflare config auto-triggers an interactive `astro add
+  cloudflare` wizard (silently auto-confirmed in CI), which installs the
+  `@astrojs/cloudflare` adapter and reroutes image handling through a Cloudflare Images
+  binding that was never provisioned. The generated config got written straight to
+  `.gitignore` each time, so this was silently re-happening on every deploy. Fixed with
+  a committed `wrangler.jsonc` (static assets only, no adapter/bindings) and pinned
+  `wrangler` as a real devDependency — confirmed with `wrangler deploy --dry-run`
+  locally and by checking actual image load state on the live site page-by-page after
+  redeploying. Diagnosed this collaboratively with the owner, who doesn't have
+  terminal/CLI access — walked through the Cloudflare dashboard UI (deployments → build
+  log → settings) step-by-step to get the log text needed to find the real cause,
+  rather than guessing at fixes blind.
