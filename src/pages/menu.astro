@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import MenuCard from '../components/MenuCard.astro';
+import { compareByCategoryOrder } from '../data/menuCategoryOrder';
+
+const items = await getCollection('menu');
+
+const categories = new Map<string, typeof items>();
+for (const item of items) {
+	const list = categories.get(item.data.category) ?? [];
+	list.push(item);
+	categories.set(item.data.category, list);
+}
+
+const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
+	compareByCategoryOrder(a, b)
+);
+---
+
+<Layout
+	title="Menu"
+	description="The full Lavender Refreshments menu — dine-in favorites from the Purple House kitchen."
+	ogImage="sisig.jpg"
+>
+	<div class="bg-gradient-to-b from-[#fdf2f8] to-[#fffbff]">
+		<div class="mx-auto flex max-w-[1160px] flex-col gap-2 px-6 pt-9 pb-5 lg:px-10 lg:pt-14 lg:pb-6">
+			<h1 class="m-0 text-[26px] font-extrabold text-brand-950 lg:text-4xl">Menu</h1>
+			<p class="text-sm leading-relaxed text-brand-700">
+				Dine-in favorites from the Purple House kitchen. Prices in Philippine pesos.
+			</p>
+		</div>
+	</div>
+
+	<div class="mx-auto max-w-[1160px] px-5 pb-6 lg:px-10 lg:pb-6">
+		{
+			orderedCategories.map(([category, categoryItems]) => (
+				<section>
+					<h2 class="border-b-2 border-brand-100 px-1 pt-5 pb-2.5 text-[13px] font-extrabold tracking-[0.1em] text-brand-600 uppercase">
+						{category}
+					</h2>
+					{category === 'Bilao' ? (
+						<div class="grid grid-cols-2 gap-3.5 py-4 lg:grid-cols-4 lg:gap-5">
+							{categoryItems.map((item) => (
+								<MenuCard
+									name={item.data.name}
+									description={item.data.description}
+									price={item.data.price}
+									photo={item.data.photo}
+									layout="stacked"
+								/>
+							))}
+						</div>
+					) : (
+						<div class="lg:grid lg:grid-cols-2 lg:gap-4 lg:py-4">
+							{categoryItems.map((item) => (
+								<MenuCard
+									name={item.data.name}
+									description={item.data.description}
+									price={item.data.price}
+									photo={item.data.photo}
+								/>
+							))}
+						</div>
+					)}
+				</section>
+			))
+		}
+	</div>
+</Layout>

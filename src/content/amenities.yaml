@@ -1,6 +1,35 @@
-# PLACEHOLDER CONTENT. This one sample entry exists only to prove the schema works —
-# it is not real. Replace entirely once real Purple House photography is available
-# (see TASKS.md, milestone M1).
-- id: sample-amenity
-  title: 'Sample Space'
-  caption: 'Placeholder caption — replace with a real caption describing this area.'
+# Real Purple House photography, captioned and approved by the owner as part of the
+# M2 design canvas (see TASKS.md, milestone M2). 27 more gallery photos exist in
+# src/assets/photos and public/ and could be swapped in or added to this list later.
+- id: aerial-view
+  title: 'From Above'
+  caption: 'The Purple House from above, right on the water'
+  photo: 'gallery-34.jpg'
+- id: entrance-outdoor-seating
+  title: 'Entrance & Outdoor Seating'
+  caption: 'The entrance and outdoor seating area'
+  photo: 'hero-exterior.jpg'
+- id: egg-chairs
+  title: 'Outdoor Lounge'
+  caption: 'Hanging egg chairs in the outdoor lounge'
+  photo: 'gallery-5.jpg'
+- id: hammock-by-river
+  title: 'Hammock Seating'
+  caption: 'Hammock seating by the river'
+  photo: 'dine-in.jpg'
+- id: indoor-dining
+  title: 'Indoor Dining'
+  caption: 'Indoor dining under purple decor'
+  photo: 'gallery-15.jpg'
+- id: dining-nook
+  title: 'Dining Nook'
+  caption: 'A cozy indoor dining nook'
+  photo: 'gallery-30.jpg'
+- id: stilt-huts
+  title: 'Stilt Huts'
+  caption: 'Purple stilt huts lining the water'
+  photo: 'gallery-25.jpg'
+- id: neon-sign-night
+  title: 'At Night'
+  caption: 'The Lavender Refreshment sign, lit up at night'
+  photo: 'gallery-20.jpg'

@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import GalleryItem from '../components/GalleryItem.astro';
+
+const amenities = await getCollection('amenities');
+---
+
+<Layout
+	title="Amenities"
+	description="A look around the Purple House — seating, spaces, and the view."
+	ogImage="gallery-20.jpg"
+>
+	<div class="bg-gradient-to-b from-[#fdf2f8] to-[#fffbff]">
+		<div class="mx-auto flex max-w-[1160px] flex-col gap-2 px-6 pt-9 pb-5 lg:px-10 lg:pt-14 lg:pb-6">
+			<h1 class="m-0 text-[26px] font-extrabold text-brand-950 lg:text-4xl">Amenities</h1>
+			<p class="text-sm leading-relaxed text-brand-700">
+				A look around the Purple House — seating, spaces, and the view.
+			</p>
+		</div>
+	</div>
+
+	<div class="mx-auto grid max-w-[1160px] grid-cols-2 gap-3 px-5 py-8 lg:grid-cols-4 lg:gap-6 lg:px-10 lg:py-12">
+		{
+			amenities.map((amenity, index) => (
+				<div class:list={[index >= 6 ? 'col-span-2' : '']}>
+					<GalleryItem caption={amenity.data.caption} photo={amenity.data.photo} />
+				</div>
+			))
+		}
+	</div>
+</Layout>

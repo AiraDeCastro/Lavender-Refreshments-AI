@@ -1,0 +1,76 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import { getPhoto } from '../utils/photos';
+
+const [story] = await getCollection('story');
+const { Content } = await render(story);
+const founderPhoto = story.data.coverPhoto ? getPhoto(story.data.coverPhoto) : null;
+---
+
+<Layout
+	title="Our Story"
+	description="The people and the place behind Lavender Refreshments."
+	ogImage="founder-photo.jpg"
+>
+	<div class="bg-gradient-to-b from-[#fdf2f8] to-[#fffbff]">
+		<div class="mx-auto flex max-w-[1160px] flex-col gap-2 px-6 pt-9 pb-5 lg:px-10 lg:pt-14 lg:pb-6">
+			<h1 class="m-0 text-[26px] font-extrabold text-brand-950 lg:text-4xl">Our Story</h1>
+			<p class="text-sm leading-relaxed text-brand-700">
+				The people and the place behind Lavender Refreshments.
+			</p>
+		</div>
+	</div>
+
+	<div class="mx-auto max-w-[1160px] px-0 lg:px-10 lg:py-6">
+		<div class="lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
+			{
+				founderPhoto && (
+					<Image
+						src={founderPhoto}
+						alt="The founder of Lavender Refreshments"
+						width={900}
+						height={900}
+						class="h-[280px] w-full object-cover lg:sticky lg:top-6 lg:h-[520px] lg:rounded-3xl"
+					/>
+				)
+			}
+			<div class="story-content flex flex-col gap-6 px-6 py-8 lg:px-0 lg:py-0">
+				<Content />
+			</div>
+		</div>
+	</div>
+
+	<div class="bg-brand-50">
+		<div class="mx-auto flex max-w-[1160px] flex-col items-center gap-4 px-6 py-9 text-center">
+			<div class="text-[19px] font-extrabold text-brand-950">Come see it for yourself</div>
+			<p class="max-w-[280px] text-sm leading-relaxed text-brand-700">
+				Explore the menu or place an order — we'd love to have you at the Purple House.
+			</p>
+			<a href="/menu" class="rounded-2xl bg-brand-600 px-7 py-3.5 text-[15px] font-bold text-white"
+				>Explore Our Menu</a
+			>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.story-content :global(h2) {
+		font-size: 12.5px;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-brand-600);
+	}
+	.story-content :global(p) {
+		padding: 14px 16px;
+		border: 1.5px dashed var(--color-brand-300);
+		border-radius: 12px;
+		font-size: 13.5px;
+		font-style: italic;
+		color: var(--color-brand-600);
+		line-height: 1.6;
+		margin-top: 8px;
+	}
+</style>

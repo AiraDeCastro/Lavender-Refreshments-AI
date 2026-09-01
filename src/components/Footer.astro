@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import { getPhoto } from '../utils/photos';
+import { site } from '../data/site';
+
+const logoMarkLight = getPhoto('logo-mark-light.png');
+
+const links = [
+	{ href: '/', label: 'Home' },
+	{ href: '/menu', label: 'Menu' },
+	{ href: '/amenities', label: 'Amenities' },
+	{ href: '/story', label: 'Our Story' },
+	{ href: '/order', label: 'Order' },
+];
+---
+
+<footer class="bg-brand-950">
+	<div class="mx-auto max-w-[1160px] px-6 pb-7 pt-11 lg:px-10 lg:pb-8 lg:pt-14">
+		<div
+			class="flex flex-col items-center gap-8 text-center lg:grid lg:grid-cols-[1.3fr_1fr_1fr] lg:items-start lg:gap-10 lg:text-left"
+		>
+			<div class="flex flex-col items-center gap-2.5 lg:items-start">
+				<div class="flex items-center gap-2.5">
+					<Image
+						src={logoMarkLight}
+						alt="Lavender Refreshments monogram"
+						height={40}
+						width={73}
+					/>
+					<span class="text-[17px] font-extrabold text-white lg:text-base">Lavender Refreshments</span>
+				</div>
+				<div class="text-[13px] italic text-brand-300">{site.tagline}</div>
+				<a
+					href={site.facebookUrl ?? '#'}
+					class="mt-2 flex w-fit items-center gap-2 rounded-full bg-brand-900 px-4.5 py-2.5 text-[13px] font-bold text-white lg:px-4 lg:py-2.5"
+				>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"
+						><path
+							d="M12 2C6.48 2 2 6.15 2 11.27c0 2.91 1.44 5.5 3.7 7.2V22l3.38-1.86c.9.25 1.87.38 2.92.38 5.52 0 10-4.15 10-9.25S17.52 2 12 2zm1.02 12.46l-2.55-2.72-4.98 2.72 5.48-5.82 2.6 2.72 4.93-2.72-5.48 5.82z"
+						></path></svg
+					>
+					Message Us on Facebook
+				</a>
+			</div>
+
+			<div class="flex flex-col items-center gap-1.5 text-[14px] leading-relaxed text-brand-100 lg:items-start">
+				<div class="mb-2 hidden text-[12px] font-extrabold tracking-[0.08em] text-brand-400 uppercase lg:block">
+					Find Us
+				</div>
+				<div class="font-bold text-white">{site.hours}</div>
+				<div class="mt-1.5 lg:mt-0">{site.address}</div>
+				<div>{site.phone}</div>
+			</div>
+
+			<div class="flex flex-col items-center gap-2 pt-1.5 lg:items-start">
+				<div class="mb-1 hidden text-[12px] font-extrabold tracking-[0.08em] text-brand-400 uppercase lg:block">
+					Navigate
+				</div>
+				<div class="flex flex-wrap justify-center gap-4.5 text-[13px] font-semibold lg:flex-col lg:gap-2 lg:text-[14px]">
+					{links.map((link) => <a href={link.href}>{link.label}</a>)}
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="mt-6 flex flex-col items-center gap-1 border-t border-brand-900 pt-4.5 text-[12px] text-brand-400 lg:mt-6 lg:flex-row lg:justify-between lg:pt-6 lg:text-[12.5px]"
+		>
+			<div>&copy; {new Date().getFullYear()} {site.name}. All rights reserved.</div>
+			<div>Culasi, Ajuy, Iloilo, Philippines</div>
+		</div>
+	</div>
+</footer>

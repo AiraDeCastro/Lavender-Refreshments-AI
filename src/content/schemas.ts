@@ -13,7 +13,7 @@ export const amenitySchema = z.object({
 	id: z.string(),
 	title: z.string(),
 	caption: z.string(),
-	photo: z.string().optional(),
+	photo: z.string(),
 });
 
 export const storyFrontmatterSchema = z.object({

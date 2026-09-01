@@ -67,6 +67,7 @@ describe('amenitySchema', () => {
 			id: 'sample-amenity',
 			title: 'Indoor Seating',
 			caption: 'A quiet corner by the window.',
+			photo: 'indoor-seating.jpg',
 		});
 		expect(result.success).toBe(true);
 	});
@@ -75,6 +76,16 @@ describe('amenitySchema', () => {
 		const result = amenitySchema.safeParse({
 			id: 'sample-amenity',
 			title: 'Indoor Seating',
+			photo: 'indoor-seating.jpg',
+		});
+		expect(result.success).toBe(false);
+	});
+
+	it('rejects an entry missing the photo', () => {
+		const result = amenitySchema.safeParse({
+			id: 'sample-amenity',
+			title: 'Indoor Seating',
+			caption: 'A quiet corner by the window.',
 		});
 		expect(result.success).toBe(false);
 	});

@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+import { getPhoto } from '../utils/photos';
+
+const logoMark = getPhoto('logo-mark.png');
+
+const links = [
+	{ href: '/', label: 'Home' },
+	{ href: '/menu', label: 'Menu' },
+	{ href: '/amenities', label: 'Amenities' },
+	{ href: '/story', label: 'Our Story' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-brand-100 bg-[#fffbff]">
+	<div
+		class="mx-auto flex max-w-[1160px] items-center justify-between px-5 py-3.5 lg:px-10 lg:py-4"
+	>
+		<a href="/" class="flex items-center gap-2.5 lg:gap-3">
+			<Image src={logoMark} alt="Lavender Refreshments monogram" height={38} width={70} />
+			<span class="text-base font-extrabold tracking-tight text-brand-950 lg:text-[17px]"
+				>Lavender Refreshments</span
+			>
+		</a>
+
+		<nav class="hidden items-center gap-9 lg:flex">
+			{
+				links.map((link) => (
+					<a
+						href={link.href}
+						class:list={[
+							'text-[14.5px]',
+							currentPath === link.href
+								? 'font-bold text-brand-950'
+								: 'font-semibold text-brand-800',
+						]}
+					>
+						{link.label}
+					</a>
+				))
+			}
+		</nav>
+		<a
+			href="/order"
+			class="hidden rounded-xl bg-brand-600 px-[22px] py-[11px] text-[14.5px] font-bold text-white lg:block"
+			>Order Now</a
+		>
+
+		<button
+			id="nav-toggle"
+			type="button"
+			aria-label="Toggle menu"
+			aria-expanded="false"
+			aria-controls="nav-mobile-menu"
+			class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-[10px] bg-brand-50 lg:hidden"
+		>
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4c1d95" stroke-width="2" stroke-linecap="round"
+				><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line
+					x1="4"
+					y1="17"
+					x2="20"
+					y2="17"></line></svg
+			>
+		</button>
+	</div>
+
+	<div id="nav-mobile-menu" class="hidden flex-col gap-1 border-t border-brand-100 px-3.5 pb-5 pt-2.5 lg:hidden">
+		{
+			links.map((link) => (
+				<a
+					href={link.href}
+					class:list={[
+						'rounded-[10px] px-3 py-3.5 text-[15px]',
+						currentPath === link.href
+							? 'bg-brand-50 font-bold text-brand-950'
+							: 'font-semibold text-brand-800',
+					]}
+				>
+					{link.label}
+				</a>
+			))
+		}
+		<div class="mt-2">
+			<a
+				href="/order"
+				class="block rounded-xl bg-brand-600 px-2.5 py-3.5 text-center text-[15px] font-bold text-white"
+				>Order Now</a
+			>
+		</div>
+	</div>
+</header>
+
+<script>
+	const toggle = document.getElementById('nav-toggle');
+	const menu = document.getElementById('nav-mobile-menu');
+
+	toggle?.addEventListener('click', () => {
+		const isOpen = menu?.classList.toggle('hidden') === false;
+		menu?.classList.toggle('flex', isOpen);
+		toggle.setAttribute('aria-expanded', String(isOpen));
+	});
+</script>

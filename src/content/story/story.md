@@ -1,12 +1,23 @@
 ---
 title: 'Our Story'
+coverPhoto: 'founder-photo.jpg'
 ---
 
 <!--
-  PLACEHOLDER CONTENT. This exists only to prove the schema works — it is not the real
-  story. Replace entirely once the owner provides the real founder narrative (see
-  TASKS.md, milestone M1).
+  The three sections below match the M2 design canvas exactly. Owner approved this
+  layout direction 2026-09-01, but the narrative text itself is still a placeholder
+  pending the real founder write-up (see TASKS.md, milestone M1) — do not treat the
+  bracketed text as final copy.
 -->
 
-Placeholder story text. Replace with who started Lavender Refreshments, why the Purple
-House, and what the name means.
+## Who Started It
+
+[Placeholder — add the founder's story here: who started Lavender Refreshments and what inspired it.]
+
+## Why the Purple House
+
+[Placeholder — why the Purple House became home for the restaurant.]
+
+## What the Name Means
+
+[Placeholder — what the name "Lavender Refreshments" means to the family.]

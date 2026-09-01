@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import { getPhoto } from '../utils/photos';
+
+interface Props {
+	caption: string;
+	photo: string;
+}
+
+const { caption, photo } = Astro.props;
+const photoAsset = getPhoto(photo);
+---
+
+<figure class="flex flex-col gap-1.5">
+	<Image
+		src={photoAsset}
+		alt={caption}
+		width={340}
+		height={190}
+		class="h-[170px] w-full rounded-2xl object-cover lg:h-[220px]"
+	/>
+	<figcaption class="text-xs leading-snug text-brand-800">{caption}</figcaption>
+</figure>

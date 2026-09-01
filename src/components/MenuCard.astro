@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import { getPhoto } from '../utils/photos';
+import PriceTag from './PriceTag.astro';
+
+interface Props {
+	name: string;
+	description: string;
+	price: number | 'Ask staff';
+	photo?: string;
+	layout?: 'row' | 'stacked';
+}
+
+const { name, description, price, photo, layout = 'row' } = Astro.props;
+const photoAsset = photo ? getPhoto(photo) : null;
+---
+
+{
+	layout === 'stacked' ? (
+		<div class="flex flex-col gap-1.5">
+			{photoAsset && (
+				<Image
+					src={photoAsset}
+					alt={name}
+					width={340}
+					height={130}
+					class="h-[130px] w-full rounded-xl object-cover"
+				/>
+			)}
+			<div class="text-sm font-bold text-brand-950">{name}</div>
+			<div class="text-xs leading-snug text-brand-800">{description}</div>
+			<PriceTag price={price} />
+		</div>
+	) : (
+		<div class="flex items-start gap-3.5 border-b border-brand-50 py-4 lg:rounded-2xl lg:border lg:border-brand-50 lg:p-4">
+			{photoAsset && (
+				<Image
+					src={photoAsset}
+					alt={name}
+					width={68}
+					height={68}
+					class="h-[68px] w-[68px] flex-shrink-0 rounded-xl object-cover lg:h-[60px] lg:w-[60px]"
+				/>
+			)}
+			<div class="flex flex-1 flex-col gap-0.5">
+				<div class="text-[15px] font-bold text-brand-950 lg:text-[14.5px]">{name}</div>
+				<div class="text-[12.5px] leading-snug text-brand-800">{description}</div>
+			</div>
+			<PriceTag price={price} />
+		</div>
+	)
+}
