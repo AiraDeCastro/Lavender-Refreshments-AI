@@ -3,6 +3,8 @@ import { Image } from 'astro:assets';
 import { getPhoto } from '../utils/photos';
 
 const logoMark = getPhoto('logo-mark.png');
+const logoMarkHeight = 38;
+const logoMarkWidth = Math.round((logoMarkHeight / logoMark.height) * logoMark.width);
 
 const links = [
 	{ href: '/', label: 'Home' },
@@ -19,7 +21,7 @@ const currentPath = Astro.url.pathname;
 		class="mx-auto flex max-w-[1160px] items-center justify-between px-5 py-3.5 lg:px-10 lg:py-4"
 	>
 		<a href="/" class="flex items-center gap-2.5 lg:gap-3">
-			<Image src={logoMark} alt="Lavender Refreshments monogram" height={38} width={70} />
+			<Image src={logoMark} alt="Lavender Refreshments monogram" height={logoMarkHeight} width={logoMarkWidth} />
 			<span class="text-base font-extrabold tracking-tight text-brand-950 lg:text-[17px]"
 				>Lavender Refreshments</span
 			>

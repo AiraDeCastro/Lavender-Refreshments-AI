@@ -4,6 +4,10 @@ import { getPhoto } from '../utils/photos';
 import { site } from '../data/site';
 
 const logoMarkLight = getPhoto('logo-mark-light.png');
+const logoMarkLightHeight = 40;
+const logoMarkLightWidth = Math.round(
+	(logoMarkLightHeight / logoMarkLight.height) * logoMarkLight.width
+);
 
 const links = [
 	{ href: '/', label: 'Home' },
@@ -24,8 +28,8 @@ const links = [
 					<Image
 						src={logoMarkLight}
 						alt="Lavender Refreshments monogram"
-						height={40}
-						width={73}
+						height={logoMarkLightHeight}
+						width={logoMarkLightWidth}
 					/>
 					<span class="text-[17px] font-extrabold text-white lg:text-base">Lavender Refreshments</span>
 				</div>
