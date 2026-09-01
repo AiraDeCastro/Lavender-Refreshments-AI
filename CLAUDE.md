@@ -206,3 +206,7 @@ completes meaningful work, don't rewrite history in it.
   **M2's full checklist (all 5 pages + Nav/Footer, both mobile and desktop) is now
   drafted, but not yet signed off by the owner as final** — that sign-off is the next
   step before M3 (Build).
+- **2026-09-01** — Owner corrected the hours: the restaurant is fully closed on
+  Mondays, not "call ahead" as previously recorded. `site.ts` and every mention in the
+  design canvas (Home, Footer, both mobile and desktop) updated to "Tue–Sun, 8am–7pm
+  (closed Mondays)" and pushed.

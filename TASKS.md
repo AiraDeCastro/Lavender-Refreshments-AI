@@ -64,8 +64,10 @@ started.
       live site) — phone matches at +63 907 277 1354, so `src/data/site.ts` now points
       at the Page instead of the Group. Hours conflict (website said Mon–Sun
       7:30am–6:30pm, Facebook Page said Tue–Sun 8am–7pm with a call-ahead note for
-      Monday) resolved 2026-08-30 — owner confirmed the Facebook Page version is
-      current; `site.ts` updated, to be revisited later per the owner
+      Monday) resolved 2026-08-30 — owner confirmed the Facebook Page's days/hours are
+      current. Owner then clarified 2026-09-01 that the restaurant is fully **closed**
+      on Mondays (not "call ahead") — `site.ts` and the design canvas both updated to
+      "Tue–Sun, 8am–7pm (closed Mondays)"
 - [x] Confirm existing logo/brand colors, or greenlight a purple palette built from
       scratch — confirmed from the live site: existing logo (`LR_Logo5.png`) and a
       purple/lavender palette already in use (button purple `#7C3AED`, dark section
