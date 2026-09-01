@@ -186,3 +186,23 @@ completes meaningful work, don't rewrite history in it.
   (`LR_Logo_Transparent.png`, added to `public/`) — pushed together with the design
   tokens (commit `7ac6058`). Amenities and Our Story pages not designed yet; no desktop
   layout considered yet either.
+- **2026-08-31** — Continued the M2 design canvas from the same link. Expanded the Menu
+  mockup from a handful of sample items to the full real 72-item menu (all 12
+  categories, exact names/descriptions/prices from `menu.yaml`), and added all 7 real
+  Bilao tray photos as a photo grid. Added an Our Story mockup with the candidate
+  founder photo — owner confirmed using it even though it's a personal London photo,
+  not one taken at the Purple House — with the narrative text left as clearly-marked
+  `[Placeholder — ...]` boxes pending the real write-up from M1. Added an
+  Amenities/Gallery mockup using 8 of the real gallery photos (aerial view, outdoor
+  lounge, indoor dining, the neon sign at night, etc.) with real, visually-grounded
+  captions, not invented ones — about 27 more gallery photos in `public/` remain
+  unused. Built desktop-width (1440px) versions of all five pages plus the shared
+  Nav/Footer, laid out as a second "Desktop" page on the same canvas next to the
+  original "Mobile" one. Ran background content-accuracy checks against the real
+  menu/photo data after each major addition (full menu, desktop set) — both came back
+  clean, no invented content or broken references found. Pushed two documentation-only
+  commits recording this progress in TASKS.md (`b5c2e48`, `658c752`); nothing else in
+  the repo changed today since the design work itself lives on the canvas, not in git.
+  **M2's full checklist (all 5 pages + Nav/Footer, both mobile and desktop) is now
+  drafted, but not yet signed off by the owner as final** — that sign-off is the next
+  step before M3 (Build).
