@@ -154,8 +154,8 @@ sign-off on the whole set before moving to M3 (Build).
 ## M5 — Fast-follow (v1.1 — do not start until explicitly requested)
 
 - [ ] Register a Meta App and request Page Messaging permission
-- [ ] Build the Netlify Function that receives the order POST and calls the Messenger
-      Send API (PRD Option B)
+- [ ] Build the Cloudflare Pages Function that receives the order POST and calls the
+      Messenger Send API (PRD Option B)
 - [ ] Submit for Meta App Review
 - [ ] Cut the order form over from the deep-link to direct API submission once approved
 - [ ] Revisit the staff order-log page (PRD "Could" feature) if Option B alone isn't
