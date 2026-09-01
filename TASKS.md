@@ -204,17 +204,41 @@ instead of letting deploys fetch an unpinned version fresh via `npx` each time.
 
 ## M4 — QA & soft launch
 
-- [ ] Cross-device pass: iOS Safari, Android Chrome, desktop
-- [ ] End-to-end order test — confirm the Messenger deep-link produces a correct,
-      readable prefilled message on both iOS and Android
-- [ ] Mobile performance check on a throttled connection (Lighthouse mobile score)
-- [ ] Verify every link — map, Facebook Page, phone number — actually resolves
-- [ ] Proofread all content against the owner-provided final copy (no leftover
-      placeholder menu items, prices, or story text)
-- [ ] Point the confirmed domain at the host, verify SSL
-- [ ] Soft launch to a small group before a public announcement
+- [ ] Cross-device pass: iOS Safari, Android Chrome, desktop — verified in an emulated
+      mobile width (375px) and desktop width across all 5 pages (Home, Menu, Amenities,
+      Our Story, Order): hamburger menu, image loading, and layout all correct. **Not
+      yet done: a real iOS Safari / Android Chrome pass on physical devices** — emulation
+      can't catch everything (e.g. real Safari quirks), so this still needs a phone-in-hand
+      check before public launch
+- [x] End-to-end order test — confirm the Messenger deep-link produces a correct,
+      readable prefilled message on both iOS and Android — tested for real against live
+      Facebook infrastructure (not a mock): filled out the form (items incl. an "Ask
+      staff" item, Delivery + address, date/time, notes), submitted, and the `m.me`
+      link correctly redirected to a real Messenger thread tied to the actual Page,
+      with a clean, complete, correctly-formatted message. Confirms the Page ID is
+      wired correctly. Only done from a desktop browser — still worth a real tap-through
+      on an actual iOS/Android phone before launch, since that's the real customer path
+- [ ] Mobile performance check on a throttled connection (Lighthouse mobile score) —
+      **not done**, no Lighthouse tooling available in this environment; images are
+      confirmed well-compressed from the M3 build logs (e.g. founder photo 2.3MB → 70KB)
+      as an indirect signal, but a real Lighthouse score still needs to be pulled
+      (e.g. Chrome DevTools on the live URL, or PageSpeed Insights)
+- [x] Verify every link — map, Facebook Page, phone number — actually resolves — found
+      and fixed a real gap: phone number and address were plain text, not links.
+      Added a real `tel:` link and a Google Maps link (derived from the real
+      phone/address in `site.ts`, with tests). Checked every internal nav link (all 5
+      pages return 200), the Facebook Page link, and the Maps link all resolve
+- [x] Proofread all content against the owner-provided final copy (no leftover
+      placeholder menu items, prices, or story text) — scanned the whole codebase for
+      leftover placeholder/TODO markers; only the intentional, clearly-marked Our Story
+      placeholder remains (expected, tracked separately under M1)
+- [ ] Point the confirmed domain at the host, verify SSL — **needs the owner**: this
+      swaps their currently-live site for this one, so it shouldn't happen without them
+      present/aware
+- [ ] Soft launch to a small group before a public announcement — **owner's call**
 - [ ] Set up analytics (optional — e.g. Plausible or Cloudflare Web Analytics) if the
-      owner wants to track the PRD's success metrics
+      owner wants to track the PRD's success metrics — **owner's decision** on whether
+      they want this at all
 
 ## M5 — Fast-follow (v1.1 — do not start until explicitly requested)
 
