@@ -209,4 +209,31 @@ completes meaningful work, don't rewrite history in it.
 - **2026-09-01** — Owner corrected the hours: the restaurant is fully closed on
   Mondays, not "call ahead" as previously recorded. `site.ts` and every mention in the
   design canvas (Home, Footer, both mobile and desktop) updated to "Tue–Sun, 8am–7pm
-  (closed Mondays)" and pushed.
+  (closed Mondays)" and pushed. Owner then approved the full M2 design direction (all 5
+  pages + Nav/Footer, mobile and desktop) — M2 signed off.
+
+  Started and finished M3 (Build) the same day: real Astro pages now exist for all five
+  routes, replacing the starter placeholder. Layout/Nav/Footer built as shared
+  components (Nav is a true responsive component — mobile hamburger and desktop bar in
+  one, not two copies); Menu renders the real 72-item menu grouped by category (caught
+  in browser testing that content-collection order isn't the YAML's source order, so
+  added `menuCategoryOrder.ts` to sort by the real menu's category sequence, with
+  tests); Amenities and Our Story render the real content added during M2. The Order
+  page is fully interactive — add/remove items with quantity, a Pickup/Delivery toggle
+  that conditionally requires a delivery address, live validation, and a live order
+  summary — and implements the PRD's Option A Messenger deep-link with the
+  message/link-building logic unit-tested in isolation (`src/utils/order.ts`, 7 tests).
+  All photography actually used on a page was moved from `public/` into
+  `src/assets/photos` and wired through `astro:assets` — real compression confirmed in
+  the build output (founder photo: 2.3MB → ~70KB). Added basic SEO (per-page
+  titles/descriptions, Open Graph image using a real photo instead of the favicon).
+  Ran an actual WCAG contrast calculation (not eyeballed) on every color combination
+  used on the site — all pass AA. Found and fixed a real gap along the way: ESLint's
+  config never had a TypeScript parser wired up for `.astro` frontmatter, so
+  `interface`/`typeof` usage was silently unparseable rather than linted — added
+  `typescript-eslint` and pointed `eslint-plugin-astro` at it. Verified everything in
+  the browser (desktop and mobile widths, the hamburger menu, and the order form's
+  interactions) before committing. Pushed as a single commit (`2176e0b`) after the
+  pre-commit gate passed for real. **M3 is functionally complete** — nothing blocking
+  M4 next, though the Our Story text is still placeholder copy pending the real
+  write-up from M1.

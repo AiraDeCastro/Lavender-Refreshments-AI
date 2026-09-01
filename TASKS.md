@@ -132,19 +132,56 @@ form's confirmation screen has no mockup yet.
 
 ## M3 — Build
 
-- [ ] Build the global layout, Nav, and Footer components
-- [ ] Build Home from the content collections
-- [ ] Build Menu + `MenuCard` component, with category grouping
-- [ ] Build Amenities gallery + `GalleryItem` component
-- [ ] Build Our Story page
-- [ ] Build the Order form (client-side state and validation)
-- [ ] Implement the Messenger deep-link (`m.me/<page>?text=...`) per PRD Option A —
-      **do not build Option B's backend here**
-- [ ] Build the order confirmation screen
-- [ ] Wire all photography through `astro:assets` for compression/responsive sizing
-- [ ] Add SEO basics — meta tags, Open Graph image, per-page titles
-- [ ] Accessibility pass — alt text on every photo, AA contrast check on the purple
-      palette, full keyboard operability on the order form
+- [x] Build the global layout, Nav, and Footer components — `Layout.astro`, `Nav.astro`
+      (responsive: mobile hamburger + desktop bar, current-page highlighting),
+      `Footer.astro` (stacked mobile / multi-column desktop), matching the approved
+      design canvas
+- [x] Build Home from the content collections — hero, quick info strip (from
+      `site.ts`), three feature blocks, and closing CTA; real photos via `astro:assets`
+- [x] Build Menu + `MenuCard` component, with category grouping — all 72 real items,
+      grouped and displayed in the real menu's category order (not incidental
+      alphabetical order — added `menuCategoryOrder.ts` with tests after catching this
+      in browser verification), Bilao rendered as a photo-forward stacked-card variant
+      of `MenuCard` instead of a second component
+- [x] Build Amenities gallery + `GalleryItem` component — all 8 real captioned photos
+- [x] Build Our Story page — renders the real markdown content (including the
+      still-placeholder narrative text) alongside the founder photo
+- [x] Build the Order form (client-side state and validation) — add/remove items with
+      quantity, Pickup/Delivery toggle, conditionally-required delivery address, inline
+      validation errors, live order summary panel; verified interactively in-browser
+      (add item, quantity, delivery toggle, and a blocked submit with a validation
+      message all confirmed working)
+- [x] Implement the Messenger deep-link (`m.me/<page>?text=...`) per PRD Option A —
+      order-message and link-building logic extracted to `src/utils/order.ts` with unit
+      tests (7 tests: totals, "Ask staff" items, delivery address inclusion, optional
+      fields). **Did not build Option B's backend**, as instructed
+- [x] Build the order confirmation screen — no separate screen was built; the live
+      order summary panel (visible the whole time the customer is filling the form,
+      confirming items/total before they tap "Send") serves that role. There's no
+      server round-trip to confirm here regardless — the real confirmation happens in
+      Messenger itself once the customer taps send
+- [x] Wire all photography through `astro:assets` for compression/responsive sizing —
+      moved every photo actually used on a page from `public/` into `src/assets/photos`
+      and imported it; confirmed real compression in the build output (e.g. the founder
+      photo: 2.3MB source → ~70KB generated)
+- [x] Add SEO basics — meta tags, Open Graph image, per-page titles — each page has a
+      real title/description; Open Graph image defaults to a real Purple House photo
+      instead of the favicon, with a more fitting photo per page where one existed
+- [x] Accessibility pass — alt text on every photo, AA contrast check on the purple
+      palette, full keyboard operability on the order form — alt text present on every
+      image; interactive elements are real `<button>`/`<input>`/`<select>`/`<a>`
+      elements (keyboard-operable by default), with `aria-expanded`/`aria-pressed`/
+      `aria-live` where relevant. Contrast actually calculated (WCAG formula, not
+      eyeballed) for the 7 color combinations used across the site — all pass AA
+      (4.5:1+), ranging 5.2:1 to 15.2:1
+
+**M3 is functionally complete as of 2026-09-01** — the site is real and working, not a
+mockup, at `http://localhost:4321` in dev and live at
+`https://lavender-refreshments-ai.airanicoledecastro9.workers.dev/` once pushed. Two
+things still trace back to open M1 items rather than M3 itself: the Our Story page's
+narrative text is real placeholder copy (not final), and the "hours" business decisions
+(pickup/delivery, payment field) haven't changed anything here since the Order form
+doesn't reference either yet. Not yet done: nothing blocking — M4 (QA/launch) is next.
 
 ## M4 — QA & soft launch
 
