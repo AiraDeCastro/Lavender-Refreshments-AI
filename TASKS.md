@@ -96,32 +96,39 @@ build real pages against — don't let this stall M0.
       varying weight/italic for hierarchy) rather than picking something new; loaded
       via Google Fonts in `global.css`. Type scale: Tailwind's default scale, no custom
       sizes needed for a site this size
-- [ ] Design Home — hero, primary CTAs, quick hours/location/FB link — mockup drafted
-      at both phone and desktop width, reviewed with the owner (logo sizing/contrast
-      and footer copy already iterated on); not yet signed off as final
-- [ ] Design Menu — category layout, item card — mockup drafted at both widths with
-      the full real 72-item menu (not just samples), "Ask staff" price style included
-- [ ] Design Amenities/The Space — gallery layout and captions — mockup drafted at both
+- [x] Design Home — hero, primary CTAs, quick hours/location/FB link — mockup drafted
+      at both phone and desktop width; **owner approved this direction 2026-09-01**
+- [x] Design Menu — category layout, item card — mockup drafted at both widths with
+      the full real 72-item menu (not just samples), "Ask staff" price style included;
+      **owner approved 2026-09-01**
+- [x] Design Amenities/The Space — gallery layout and captions — mockup drafted at both
       widths using 8 real Purple House photos with real, visually-accurate captions
       (not invented); the other ~27 gallery photos in `public/` are still unused and
-      could be swapped in later
-- [ ] Design Our Story — narrative or timeline layout — mockup drafted at both widths
+      could be swapped in later; **owner approved 2026-09-01**
+- [x] Design Our Story — narrative or timeline layout — mockup drafted at both widths
       using the candidate founder photo (`Owner-Mother.JPG` — owner confirmed to use it
       despite it being a London photo, not a Purple House one); narrative text is a
-      clearly-marked placeholder pending the real write-up from M1
-- [ ] Design the Order form — fields, validation states, confirmation screen — fields
+      clearly-marked placeholder pending the real write-up from M1; **owner approved
+      the layout direction 2026-09-01** (placeholder text still needs the real copy)
+- [x] Design the Order form — fields, validation states, confirmation screen — fields
       and a Pickup/Delivery toggle mocked up at both widths (desktop adds an order
-      summary side panel); no confirmation-screen mockup yet
-- [ ] Design shared Nav and Footer — mocked up at both widths incl. a mobile-menu-open
-      state; iterated on logo size/contrast per owner feedback
-- [ ] Mobile-first responsive pass across all five pages — phone and desktop mockups
-      now exist for all 5 pages (Home, Menu, Order, Our Story, Amenities); no tablet
-      breakpoint considered, and nothing has been owner-approved as final yet
+      summary side panel); **owner approved 2026-09-01**. No separate
+      confirmation-screen mockup was built — reasonable to design that directly during
+      M3 build rather than as its own mockup
+- [x] Design shared Nav and Footer — mocked up at both widths incl. a mobile-menu-open
+      state; iterated on logo size/contrast per owner feedback; **owner approved
+      2026-09-01**
+- [x] Mobile-first responsive pass across all five pages — phone and desktop mockups
+      exist for all 5 pages (Home, Menu, Order, Our Story, Amenities); no tablet
+      breakpoint was mocked up separately, but Tailwind's responsive utilities make that
+      a build-time detail, not something that needed its own mockup
 
-**Where to pick this back up:** the design canvas (all 5 pages, phone + desktop, plus
-shared Nav/Footer) is at
-https://claude.ai/code/artifact/c68574ee-16df-49ab-aa15-96a3cf060587 — get the owner's
-sign-off on the whole set before moving to M3 (Build).
+**M2 is signed off as of 2026-09-01.** Design canvas (all 5 pages, phone + desktop,
+plus shared Nav/Footer):
+https://claude.ai/code/artifact/c68574ee-16df-49ab-aa15-96a3cf060587 — this is the
+reference to build M3 against. Two small things to carry into M3: the Our Story page's
+narrative text is still placeholder copy pending the real write-up (M1), and the Order
+form's confirmation screen has no mockup yet.
 
 ## M3 — Build
 
