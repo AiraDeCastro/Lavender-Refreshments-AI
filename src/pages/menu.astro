@@ -27,7 +27,7 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 		<div class="mx-auto flex max-w-[1160px] flex-col gap-2 px-6 pt-9 pb-5 lg:px-10 lg:pt-14 lg:pb-6">
 			<h1 class="m-0 text-[26px] font-extrabold text-brand-950 lg:text-4xl">Menu</h1>
 			<p class="text-sm leading-relaxed text-brand-700">
-				Dine-in favorites from the Purple House kitchen. Prices in Philippine pesos.
+				Dine-in favorites from the Purple House kitchen.
 			</p>
 		</div>
 	</div>
@@ -58,7 +58,6 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 									name={item.data.name}
 									description={item.data.description}
 									price={item.data.price}
-									photo={item.data.photo}
 								/>
 							))}
 						</div>
