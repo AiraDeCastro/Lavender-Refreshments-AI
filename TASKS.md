@@ -94,25 +94,32 @@ build real pages against — don't let this stall M0.
       varying weight/italic for hierarchy) rather than picking something new; loaded
       via Google Fonts in `global.css`. Type scale: Tailwind's default scale, no custom
       sizes needed for a site this size
-- [ ] Design Home — hero, primary CTAs, quick hours/location/FB link — mobile mockup
-      drafted and reviewed with the owner in a design canvas (logo sizing/contrast and
-      footer copy already iterated on); not yet signed off as final
-- [ ] Design Menu — category layout, item card — mockup drafted in the same canvas,
-      using the real sample items and showing the "Ask staff" price style
-- [ ] Design Amenities/The Space — gallery layout and captions — not started
-- [ ] Design Our Story — narrative or timeline layout — not started (blocked on the
-      founder write-up from M1 anyway)
+- [ ] Design Home — hero, primary CTAs, quick hours/location/FB link — mockup drafted
+      at both phone and desktop width, reviewed with the owner (logo sizing/contrast
+      and footer copy already iterated on); not yet signed off as final
+- [ ] Design Menu — category layout, item card — mockup drafted at both widths with
+      the full real 72-item menu (not just samples), "Ask staff" price style included
+- [ ] Design Amenities/The Space — gallery layout and captions — mockup drafted at both
+      widths using 8 real Purple House photos with real, visually-accurate captions
+      (not invented); the other ~27 gallery photos in `public/` are still unused and
+      could be swapped in later
+- [ ] Design Our Story — narrative or timeline layout — mockup drafted at both widths
+      using the candidate founder photo (`Owner-Mother.JPG` — owner confirmed to use it
+      despite it being a London photo, not a Purple House one); narrative text is a
+      clearly-marked placeholder pending the real write-up from M1
 - [ ] Design the Order form — fields, validation states, confirmation screen — fields
-      and a Pickup/Delivery toggle mocked up; no confirmation-screen mockup yet
-- [ ] Design shared Nav and Footer — mocked up incl. a mobile-menu-open state; iterated
-      on logo size/contrast per owner feedback
-- [ ] Mobile-first responsive pass across all five pages — mockups so far are phone-width
-      only; no desktop layout or Amenities/Story pages designed yet
+      and a Pickup/Delivery toggle mocked up at both widths (desktop adds an order
+      summary side panel); no confirmation-screen mockup yet
+- [ ] Design shared Nav and Footer — mocked up at both widths incl. a mobile-menu-open
+      state; iterated on logo size/contrast per owner feedback
+- [ ] Mobile-first responsive pass across all five pages — phone and desktop mockups
+      now exist for all 5 pages (Home, Menu, Order, Our Story, Amenities); no tablet
+      breakpoint considered, and nothing has been owner-approved as final yet
 
-**Where to pick this back up:** the design canvas (Home, Menu, Order, Nav, Footer) is at
+**Where to pick this back up:** the design canvas (all 5 pages, phone + desktop, plus
+shared Nav/Footer) is at
 https://claude.ai/code/artifact/c68574ee-16df-49ab-aa15-96a3cf060587 — get the owner's
-sign-off on those before designing Amenities/Story, and decide whether a desktop layout
-is in scope for v1 or a later pass.
+sign-off on the whole set before moving to M3 (Build).
 
 ## M3 — Build
 
