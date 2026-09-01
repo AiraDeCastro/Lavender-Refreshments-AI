@@ -1,0 +1,14 @@
+{
+	// Static-assets-only Worker config. Without this file committed, `wrangler deploy`
+	// auto-detects the Astro project and runs an interactive "astro add cloudflare"
+	// wizard on every deploy, which installs the @astrojs/cloudflare adapter and
+	// switches image handling to a Cloudflare Images binding that isn't provisioned —
+	// that's why every photo 404's on the live site (see TASKS.md M4). This site is
+	// meant to be plain static (see PLANNING.md), so no adapter, Worker script, or
+	// bindings are needed — just serve the build output directory as-is.
+	"name": "lavender-refreshments-ai",
+	"compatibility_date": "2026-09-01",
+	"assets": {
+		"directory": "./dist"
+	}
+}
