@@ -24,6 +24,7 @@ const photoAsset = photo ? getPhoto(photo) : null;
 					alt={name}
 					width={340}
 					height={130}
+					densities={[1, 2, 3]}
 					class="h-[130px] w-full rounded-xl object-cover"
 				/>
 			)}
@@ -39,6 +40,7 @@ const photoAsset = photo ? getPhoto(photo) : null;
 					alt={name}
 					width={68}
 					height={68}
+					densities={[1, 2, 3]}
 					class="h-[68px] w-[68px] flex-shrink-0 rounded-xl object-cover lg:h-[60px] lg:w-[60px]"
 				/>
 			)}
