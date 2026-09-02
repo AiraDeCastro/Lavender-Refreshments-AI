@@ -20,7 +20,7 @@ export const site = {
 	gcashNumber: '0907 277 1354' as string | null,
 	// Charged to bystanders/"tambay" who hang out without ordering; waived for
 	// customers who order (2026-09-02).
-	entranceFeeNote: '₱20 entrance fee for bystanders/tambay (waived if you order)' as
+	entranceFeeNote: '₱20 entrance fee para sa mga tatambay lang (waived if you order)' as
 		| string
 		| null,
 } as const;
