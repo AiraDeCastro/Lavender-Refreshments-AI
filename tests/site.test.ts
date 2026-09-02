@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { phoneHref, site } from '../src/data/site';
+import { phoneHref, rentalInquiryEmailHref, site } from '../src/data/site';
 
 describe('site settings', () => {
 	it('defines a non-empty name and address', () => {
@@ -17,5 +17,11 @@ describe('site settings', () => {
 describe('phoneHref', () => {
 	it('builds a tel: link with spaces stripped from the phone number', () => {
 		expect(phoneHref).toBe('tel:+639072771354');
+	});
+});
+
+describe('rentalInquiryEmailHref', () => {
+	it('builds a mailto: link from the rental inquiry email', () => {
+		expect(rentalInquiryEmailHref).toBe('mailto:info@lavenderrefreshments.com');
 	});
 });

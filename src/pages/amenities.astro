@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import GalleryItem from '../components/GalleryItem.astro';
+import { rentalInquiryEmailHref, site } from '../data/site';
 
 const amenities = await getCollection('amenities');
 ---
@@ -29,4 +30,23 @@ const amenities = await getCollection('amenities');
 			))
 		}
 	</div>
+
+	{
+		rentalInquiryEmailHref && (
+			<div class="bg-brand-50">
+				<div class="mx-auto flex max-w-[1160px] flex-col items-center gap-3 px-6 py-9 text-center">
+					<div class="text-[19px] font-extrabold text-brand-950">Interested in renting the space?</div>
+					<p class="max-w-[320px] text-sm leading-relaxed text-brand-700">
+						For inquiries about renting the Purple House, email us and we'll get back to you.
+					</p>
+					<a
+						href={rentalInquiryEmailHref}
+						class="rounded-2xl bg-brand-600 px-7 py-3.5 text-[15px] font-bold text-white"
+					>
+						{site.rentalInquiryEmail}
+					</a>
+				</div>
+			</div>
+		)
+	}
 </Layout>

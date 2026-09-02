@@ -305,3 +305,12 @@ completes meaningful work, don't rewrite history in it.
   "tomorrow" — his entry stays photo-less (initials fallback) until then. Verified the
   real build compresses each photo correctly (e.g. 282KB→10KB at 1x) and that all 6
   cards render with the right name/photo pairing before committing.
+
+  Owner then asked to add a rental-inquiries email. Caught a likely typo in the domain
+  she typed (`lavenderreshreshments.com` vs. the site's real registered
+  `lavenderrefreshments.com`) and confirmed the intended address with her before using
+  it, rather than hardcoding a broken email — she confirmed `lavenderrefreshments.com`.
+  Added `rentalInquiryEmail`/`rentalInquiryEmailHref` to `src/data/site.ts` (same
+  derived-link pattern as `phoneHref`, with a test) and a small "Interested in renting
+  the space?" callout with a `mailto:` link on the Amenities/Space page, since that's
+  the page about the physical venue.
