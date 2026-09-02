@@ -92,7 +92,7 @@ started.
       lavender-boxed variants once real pages are built, since it sits cleanly on any
       background color, e.g. the dark footer)_
 - [ ] Resolve the open questions from the PRD: ~~pickup vs. delivery~~, ~~payment
-      field~~, Option A vs. B for the order flow, ~~domain name~~, and language mix
+      field~~, ~~Option A vs. B~~ for the order flow, ~~domain name~~, and language mix
       _(domain resolved: `lavenderrefreshments.com`, already live on the owner's
       Cloudflare account. Pickup/delivery resolved 2026-09-01: **Pickup and Dine-in
       only, no delivery** — Order form and `src/utils/order.ts` updated, delivery
@@ -102,7 +102,11 @@ started.
       as a `Payment: Cash` or `Payment: GCash (Ref: ...)` line in the Messenger
       message. Owner confirmed the GCash account is the same registered number as
       `site.phone` (0907 277 1354) — added as `site.gcashNumber` and shown as a hint
-      next to the reference field so customers know where to send an advance payment)_
+      next to the reference field so customers know where to send an advance payment.
+      Option A vs. B resolved 2026-09-02: owner confirmed **staying on Option A**
+      (Messenger deep-link, already built and live) for now — M5's Option B backend
+      stays deferred until she explicitly asks for it. Only **language mix** remains
+      open from the original PRD list)_
 
 **Blocks:** M2 and M3 need at least placeholder-quality answers here to design and
 build real pages against — don't let this stall M0.

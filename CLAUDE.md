@@ -83,15 +83,23 @@ scaffold pages with clearly-marked placeholder content while real content is pen
 
 ## Open decisions (confirm with the user before building around them)
 
-- Payment handling: cash only, or a GCash/e-wallet reference field on the order form
+- Language mix: full English/Filipino toggle is a v1.1 candidate (see "Explicitly out
+  of scope for v1"); no decision needed for v1 beyond the existing natural English/
+  Hiligaynon mixing in copy.
 
 Resolved: pickup vs. delivery — owner confirmed 2026-09-01 the restaurant offers
 **Pickup and Dine-in only, no delivery**. The Order form's fulfillment toggle and
 `src/utils/order.ts` were updated accordingly (no delivery address field/logic).
-Resolved: existing brand assets confirmed (logo + purple/lavender palette already live
-at lavenderrefreshments.com, see TASKS.md M1). Domain/hosting resolved: Cloudflare
-Pages, domain `lavenderrefreshments.com` already registered and live on the owner's
-Cloudflare account. Facebook Page confirmed:
+Resolved: payment handling — owner confirmed 2026-09-02 **both Cash and GCash are
+accepted**. The Order form has a Cash/GCash toggle plus an optional GCash reference
+field (`src/utils/order.ts`, `src/pages/order.astro`); the GCash number is the same
+registered number as `site.phone`, added as `site.gcashNumber`. Resolved: order-flow
+option — owner confirmed 2026-09-02 **staying on Option A** (Messenger deep-link,
+already built and live) for now; Option B's backend stays deferred to M5 until she
+explicitly asks for it. Resolved: existing brand assets confirmed (logo + purple/
+lavender palette already live at lavenderrefreshments.com, see TASKS.md M1).
+Domain/hosting resolved: Cloudflare Pages, domain `lavenderrefreshments.com` already
+registered and live on the owner's Cloudflare account. Facebook Page confirmed:
 https://www.facebook.com/profile.php?id=100076299965269 ("Lavender refreshment") — the
 live site's only link was a Group, which can't receive `m.me` deep links; the Page is
 what the Option A order flow will use. Full menu (72 items) confirmed and loaded, see
@@ -327,3 +335,10 @@ completes meaningful work, don't rewrite history in it.
   Verified in-browser: the reference field is hidden by default, reveals on GCash
   selection, and the deep-link correctly redirects to real Messenger login
   infrastructure (didn't sign in — that's the owner's own account).
+
+  Owner then confirmed the last real open PRD question: **staying on Option A**
+  (Messenger deep-link) for the order flow for now, rather than starting Option B's
+  backend/Meta App Review work. No code change needed — Option A is already the live,
+  fully-built default — just documentation closing out the decision. Only the
+  language-mix question (an explicit v1.1 candidate, not a v1 blocker) remains open
+  from the original PRD list.
