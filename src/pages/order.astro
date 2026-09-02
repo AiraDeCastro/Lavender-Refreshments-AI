@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { site } from '../data/site';
 import { compareByCategoryOrder } from '../data/menuCategoryOrder';
+import { ONLINE_ORDERING_HOURS } from '../utils/order';
 
 const menuItems = await getCollection('menu');
 
@@ -16,6 +17,15 @@ for (const item of menuItems) {
 const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 	compareByCategoryOrder(a, b)
 );
+
+function formatHour(time: string): string {
+	const [h, m] = time.split(':').map(Number);
+	const period = h >= 12 ? 'PM' : 'AM';
+	const hour12 = h % 12 === 0 ? 12 : h % 12;
+	return `${hour12}:${String(m).padStart(2, '0')} ${period}`;
+}
+
+const orderingHoursLabel = `${formatHour(ONLINE_ORDERING_HOURS.start)} – ${formatHour(ONLINE_ORDERING_HOURS.end)}`;
 ---
 
 <Layout
@@ -57,9 +67,13 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 								id="customer-contact"
 								name="contact"
 								required
-								placeholder="09XX XXX XXXX"
+								inputmode="numeric"
+								maxlength="11"
+								pattern="09[0-9]{9}"
+								placeholder="09171234567"
 								class="rounded-xl border-[1.5px] border-brand-100 px-3.5 py-3 text-[15px] text-brand-950"
 							/>
+							<span class="text-xs text-brand-600">11-digit mobile number starting with 09</span>
 						</label>
 					</div>
 				</section>
@@ -139,10 +153,13 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 								type="time"
 								id="order-time"
 								name="time"
+								min={ONLINE_ORDERING_HOURS.start}
+								max={ONLINE_ORDERING_HOURS.end}
 								class="rounded-xl border-[1.5px] border-brand-100 px-3.5 py-3 text-[15px] text-brand-950"
 							/>
 						</label>
 					</div>
+					<p class="text-xs text-brand-600">Online orders for pickup/dine-in are prepped {orderingHoursLabel}.</p>
 				</section>
 
 				<!-- Notes -->
@@ -184,14 +201,20 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 	</form>
 </Layout>
 
-<script define:vars={{ facebookPageId: site.facebookPageId }}>
-	window.__ORDER_CONFIG__ = { facebookPageId };
+<script define:vars={{ facebookPageId: site.facebookPageId, orderingHoursLabel }}>
+	window.__ORDER_CONFIG__ = { facebookPageId, orderingHoursLabel };
 </script>
 
 <script>
-	import { buildMessengerLink, buildOrderMessage } from '../utils/order.ts';
+	import {
+		buildMessengerLink,
+		buildOrderMessage,
+		isValidLocalMobileNumber,
+		isWithinOnlineOrderingHours,
+		normalizeLocalMobileNumber,
+	} from '../utils/order.ts';
 
-	const { facebookPageId } = window.__ORDER_CONFIG__;
+	const { facebookPageId, orderingHoursLabel } = window.__ORDER_CONFIG__;
 
 	/** @type {{ id: string; name: string; price: number | 'Ask staff'; quantity: number }[]} */
 	let cart = [];
@@ -358,14 +381,22 @@ const orderedCategories = [...categories.entries()].sort(([a], [b]) =>
 			showError('Please fill in your name and contact number.');
 			return;
 		}
+		if (!isValidLocalMobileNumber(contact)) {
+			showError('Please enter an 11-digit mobile number starting with 09, e.g. 09171234567.');
+			return;
+		}
 		if (cart.length === 0) {
 			showError('Please add at least one item to your order.');
+			return;
+		}
+		if (!isWithinOnlineOrderingHours(time)) {
+			showError(`Please pick a time between ${orderingHoursLabel} so we can prep your order.`);
 			return;
 		}
 
 		const message = buildOrderMessage({
 			name,
-			contact,
+			contact: normalizeLocalMobileNumber(contact),
 			items: cart,
 			fulfillment,
 			date,

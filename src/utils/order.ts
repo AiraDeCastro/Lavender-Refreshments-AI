@@ -52,3 +52,24 @@ export function buildOrderMessage(order: OrderDetails): string {
 export function buildMessengerLink(pageId: string, message: string): string {
 	return `https://m.me/${pageId}?text=${encodeURIComponent(message)}`;
 }
+
+// Owner-set window for online pickup/dine-in orders, so kitchen staff have a real
+// window to prep food in — see TASKS.md, milestone M4. `<input type="time">` values
+// are always zero-padded 24-hour "HH:MM" strings, so plain string comparison sorts
+// correctly without needing to parse into minutes.
+export const ONLINE_ORDERING_HOURS = { start: '08:30', end: '18:30' } as const;
+
+export function isWithinOnlineOrderingHours(time: string): boolean {
+	if (!time) return true;
+	return time >= ONLINE_ORDERING_HOURS.start && time <= ONLINE_ORDERING_HOURS.end;
+}
+
+// Philippine local mobile numbers: 11 digits, starting with "09" (e.g. 09171234567).
+// Strips any spaces/dashes/parentheses the customer typed before checking.
+export function normalizeLocalMobileNumber(value: string): string {
+	return value.replace(/\D/g, '');
+}
+
+export function isValidLocalMobileNumber(value: string): boolean {
+	return /^09\d{9}$/.test(normalizeLocalMobileNumber(value));
+}

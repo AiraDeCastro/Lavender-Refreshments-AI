@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { buildMessengerLink, buildOrderMessage } from '../src/utils/order';
+import {
+	buildMessengerLink,
+	buildOrderMessage,
+	isValidLocalMobileNumber,
+	isWithinOnlineOrderingHours,
+	normalizeLocalMobileNumber,
+} from '../src/utils/order';
 import type { OrderDetails } from '../src/utils/order';
 
 const baseOrder: OrderDetails = {
@@ -73,5 +79,48 @@ describe('buildMessengerLink', () => {
 	it('builds an m.me link with the page id and URL-encoded message', () => {
 		const link = buildMessengerLink('100076299965269', 'Hello & welcome');
 		expect(link).toBe('https://m.me/100076299965269?text=Hello%20%26%20welcome');
+	});
+});
+
+describe('isWithinOnlineOrderingHours', () => {
+	it('accepts times inside the 8:30 AM - 6:30 PM window, including the boundaries', () => {
+		expect(isWithinOnlineOrderingHours('08:30')).toBe(true);
+		expect(isWithinOnlineOrderingHours('12:00')).toBe(true);
+		expect(isWithinOnlineOrderingHours('18:30')).toBe(true);
+	});
+
+	it('rejects times before 8:30 AM or after 6:30 PM', () => {
+		expect(isWithinOnlineOrderingHours('08:29')).toBe(false);
+		expect(isWithinOnlineOrderingHours('18:31')).toBe(false);
+		expect(isWithinOnlineOrderingHours('23:00')).toBe(false);
+	});
+
+	it('treats an empty time as valid — requiring one is a separate concern', () => {
+		expect(isWithinOnlineOrderingHours('')).toBe(true);
+	});
+});
+
+describe('normalizeLocalMobileNumber', () => {
+	it('strips spaces, dashes, and other non-digit characters', () => {
+		expect(normalizeLocalMobileNumber('0917 123 4567')).toBe('09171234567');
+		expect(normalizeLocalMobileNumber('0917-123-4567')).toBe('09171234567');
+		expect(normalizeLocalMobileNumber('(0917) 123-4567')).toBe('09171234567');
+	});
+});
+
+describe('isValidLocalMobileNumber', () => {
+	it('accepts an 11-digit number starting with 09, however it was formatted', () => {
+		expect(isValidLocalMobileNumber('09171234567')).toBe(true);
+		expect(isValidLocalMobileNumber('0917 123 4567')).toBe(true);
+	});
+
+	it('rejects numbers that are the wrong length', () => {
+		expect(isValidLocalMobileNumber('0917123456')).toBe(false); // 10 digits
+		expect(isValidLocalMobileNumber('091712345678')).toBe(false); // 12 digits
+	});
+
+	it('rejects numbers that do not start with 09', () => {
+		expect(isValidLocalMobileNumber('12345678901')).toBe(false);
+		expect(isValidLocalMobileNumber('+639171234567')).toBe(false);
 	});
 });
