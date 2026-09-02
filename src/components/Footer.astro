@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { getPhoto } from '../utils/photos';
-import { mapsUrl, phoneHref, site } from '../data/site';
+import { phoneHref, site } from '../data/site';
 
 const logoMarkLight = getPhoto('logo-mark-light.png');
 const logoMarkLightHeight = 40;
@@ -52,7 +52,7 @@ const links = [
 					Find Us
 				</div>
 				<div class="font-bold text-white">{site.hours}</div>
-				<a href={mapsUrl} target="_blank" rel="noreferrer" class="mt-1.5 hover:text-white lg:mt-0"
+				<a href={site.mapsUrl} target="_blank" rel="noreferrer" class="mt-1.5 hover:text-white lg:mt-0"
 					>{site.address}</a
 				>
 				{phoneHref && <a href={phoneHref} class="hover:text-white">{site.phone}</a>}

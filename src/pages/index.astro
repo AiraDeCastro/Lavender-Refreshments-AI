@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { getPhoto } from '../utils/photos';
-import { mapsUrl, site } from '../data/site';
+import { site } from '../data/site';
 
 const heroPhoto = getPhoto('hero-exterior.jpg');
 const dineInPhoto = getPhoto('dine-in.jpg');
@@ -90,7 +90,7 @@ const features = [
 							r="2.5"></circle></svg
 					>
 				</div>
-				<a href={mapsUrl} target="_blank" rel="noreferrer" class="text-sm font-semibold text-brand-900 hover:text-brand-600"
+				<a href={site.mapsUrl} target="_blank" rel="noreferrer" class="text-sm font-semibold text-brand-900 hover:text-brand-600"
 					>{site.address}</a
 				>
 			</div>

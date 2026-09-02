@@ -10,9 +10,11 @@ export const site = {
 	// The numeric Facebook Page ID, used to build the m.me Messenger deep link for the
 	// Order form (PRD Option A) — see CLAUDE.md "Order → Facebook".
 	facebookPageId: '100076299965269',
+	// Real pinned location, provided by the owner (2026-09-01) — resolves to the
+	// "Lavender Refreshment" place on Google Maps.
+	mapsUrl: 'https://maps.app.goo.gl/CVtmfhskWR1rYwM76',
 } as const;
 
-// Derived link targets — computed from the fields above so they can't drift out of
-// sync with the real phone number/address.
+// Derived link target — computed from the field above so it can't drift out of sync
+// with the real phone number.
 export const phoneHref = site.phone ? `tel:${site.phone.replace(/\s+/g, '')}` : null;
-export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address)}`;
