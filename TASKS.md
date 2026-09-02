@@ -62,6 +62,16 @@ started.
       the clothing shop, six staff). Loaded into `src/content/story/story.md`,
       replacing the placeholder text. A new real photo of the owner also provided
       (`founder-photo.jpg`), replacing the earlier candidate London photo
+- [x] Get the staff roster for a "Meet the Team" section — owner provided all 6 real
+      names/positions 2026-09-01 (Tito Pogi, Makoy, Inday, Dalia, Nang Ana, Nhoy Leony),
+      loaded into a new `staff` content collection (`src/content/staff.yaml`) and
+      rendered on `story.astro` below the founder narrative (`StaffCard.astro`, initials
+      avatar fallback for anyone without a photo yet). Owner then sent real photos for 5
+      of the 6 (2026-09-02, named files matching each person — no guessing needed on the
+      mapping); Nhoy Leony's photo is still pending, so his card correctly still shows
+      the "NL" initials fallback. Confirmed the owner herself is the founder, not the
+      user (Aira) — she is intentionally not listed in this section since it's scoped to
+      customer-facing restaurant staff
 - [x] Confirm hours, address, phone number, and the Facebook Page URL/handle — Facebook
       **Page** confirmed 2026-08-30: https://www.facebook.com/profile.php?id=100076299965269
       ("Lavender refreshment", verified as a real Page, not the Group linked from the

@@ -283,3 +283,25 @@ completes meaningful work, don't rewrite history in it.
   `src/utils/order.ts` and the submit handler entirely, rather than leaving unused
   code around. Only the payment-field question (cash-only vs. GCash reference) and
   Option A vs. B remain open from the original PRD list.
+- **2026-09-02** — Two Order form fixes requested by the owner: an online-ordering
+  time window (8:30 AM–6:30 PM, so kitchen staff have a sane prep window) enforced via
+  `ONLINE_ORDERING_HOURS`/`isWithinOnlineOrderingHours` in `src/utils/order.ts` plus
+  matching `min`/`max` on the time input; and local mobile number validation (11
+  digits, `09XXXXXXXXX`) via `isValidLocalMobileNumber`/`normalizeLocalMobileNumber`,
+  with `pattern`/`maxlength`/`inputmode` on the contact field. Both covered by new
+  Vitest cases and verified end-to-end (valid/invalid submissions, real Messenger
+  redirect with a correctly normalized phone number in the message).
+
+  Owner then asked for a staff/"Meet the Team" section on Our Story and provided the
+  real 6-person roster (names + positions). Built as a new `staff` content collection
+  + `StaffCard` component with an initials-avatar fallback for anyone without a photo.
+  Owner asked whether she (Aira) should be listed for her web development help —
+  clarified this section is scoped to customer-facing restaurant staff, so she isn't
+  included; also confirmed in this exchange that **Aira is not the founder — her mom
+  is** (the "Our Story" narrative and founder photo are the mom's, not Aira's).
+  Owner then sent real photos for 5 of the 6 staff (Tito Pogi, Makoy, Inday, Dalia,
+  Nang Ana) as clearly-named files, so no identity-guessing was needed; added them to
+  `src/assets/photos/` and wired into `staff.yaml`. Nhoy Leony's photo is coming
+  "tomorrow" — his entry stays photo-less (initials fallback) until then. Verified the
+  real build compresses each photo correctly (e.g. 282KB→10KB at 1x) and that all 6
+  cards render with the right name/photo pairing before committing.

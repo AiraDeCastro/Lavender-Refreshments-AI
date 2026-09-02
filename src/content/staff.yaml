@@ -1,21 +1,26 @@
 # Real staff roster, provided by the owner 2026-09-02 (see TASKS.md, milestone M1).
-# Photos are pending — owner is sending them separately; add a `photo:` field per
-# person once received rather than inventing a placeholder image.
+# Nhoy Leony's photo is still pending (owner sending it separately) — leave photo
+# unset for him rather than inventing a placeholder image.
 - id: tito-pogi
   name: 'Tito Pogi'
   position: 'Cook/Cashier'
+  photo: 'tito-pogi.jpg'
 - id: makoy
   name: 'Makoy'
   position: 'Assistant Cook/Server'
+  photo: 'makoy.jpg'
 - id: inday
   name: 'Inday'
   position: 'Manager'
+  photo: 'inday.jpg'
 - id: dalia
   name: 'Dalia'
   position: 'Server'
+  photo: 'dalia.jpg'
 - id: nang-ana
   name: 'Nang Ana'
   position: 'Shein Shop Salesperson'
+  photo: 'nang-ana.jpg'
 - id: nhoy-leony
   name: 'Nhoy Leony'
   position: 'Maintenance Manager'
