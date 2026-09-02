@@ -15,6 +15,9 @@ export const site = {
 	mapsUrl: 'https://maps.app.goo.gl/CVtmfhskWR1rYwM76',
 	// For inquiries about renting the space (2026-09-02).
 	rentalInquiryEmail: 'info@lavenderrefreshments.com' as string | null,
+	// Same number as `phone` above, in local format — this is the registered GCash
+	// account customers send an advance payment to (2026-09-02).
+	gcashNumber: '0907 277 1354' as string | null,
 } as const;
 
 // Derived link targets — computed from the fields above so they can't drift out of

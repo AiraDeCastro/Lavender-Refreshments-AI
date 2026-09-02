@@ -13,6 +13,7 @@ const baseOrder: OrderDetails = {
 	contact: '09171234567',
 	items: [{ name: 'Si-sig-log (Sisig)', price: 100, quantity: 2 }],
 	fulfillment: 'Pickup',
+	paymentMethod: 'Cash',
 };
 
 describe('buildOrderMessage', () => {
@@ -55,6 +56,33 @@ describe('buildOrderMessage', () => {
 
 		const dineInMessage = buildOrderMessage({ ...baseOrder, fulfillment: 'Dine-in' });
 		expect(dineInMessage).toContain('Fulfillment: Dine-in');
+	});
+
+	it('states the payment method, Cash or GCash', () => {
+		const cashMessage = buildOrderMessage(baseOrder);
+		expect(cashMessage).toContain('Payment: Cash');
+
+		const gcashMessage = buildOrderMessage({ ...baseOrder, paymentMethod: 'GCash' });
+		expect(gcashMessage).toContain('Payment: GCash');
+	});
+
+	it('includes the GCash reference number when provided', () => {
+		const message = buildOrderMessage({
+			...baseOrder,
+			paymentMethod: 'GCash',
+			gcashReference: 'REF123456',
+		});
+		expect(message).toContain('Payment: GCash (Ref: REF123456)');
+	});
+
+	it('omits the reference detail for Cash orders or when no reference was given', () => {
+		const cashMessage = buildOrderMessage({ ...baseOrder, gcashReference: 'REF123456' });
+		expect(cashMessage).toContain('Payment: Cash');
+		expect(cashMessage).not.toContain('Ref:');
+
+		const gcashNoRefMessage = buildOrderMessage({ ...baseOrder, paymentMethod: 'GCash' });
+		expect(gcashNoRefMessage).toContain('Payment: GCash');
+		expect(gcashNoRefMessage).not.toContain('Ref:');
 	});
 
 	it('omits optional fields (date, time, notes) when not provided', () => {

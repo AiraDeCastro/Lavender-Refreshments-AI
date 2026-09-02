@@ -91,13 +91,18 @@ started.
       transparent-background version of the same logo — use this one over the
       lavender-boxed variants once real pages are built, since it sits cleanly on any
       background color, e.g. the dark footer)_
-- [ ] Resolve the open questions from the PRD: ~~pickup vs. delivery~~, payment field
-      (cash-only vs. GCash reference), Option A vs. B for the order flow, ~~domain
-      name~~, and language mix
+- [ ] Resolve the open questions from the PRD: ~~pickup vs. delivery~~, ~~payment
+      field~~, Option A vs. B for the order flow, ~~domain name~~, and language mix
       _(domain resolved: `lavenderrefreshments.com`, already live on the owner's
       Cloudflare account. Pickup/delivery resolved 2026-09-01: **Pickup and Dine-in
       only, no delivery** — Order form and `src/utils/order.ts` updated, delivery
-      address field/logic removed entirely)_
+      address field/logic removed entirely. Payment field resolved 2026-09-02:
+      **both Cash and GCash accepted** — Order form gets a Cash/GCash toggle plus an
+      optional GCash reference number field (shown only when GCash is selected), sent
+      as a `Payment: Cash` or `Payment: GCash (Ref: ...)` line in the Messenger
+      message. Owner confirmed the GCash account is the same registered number as
+      `site.phone` (0907 277 1354) — added as `site.gcashNumber` and shown as a hint
+      next to the reference field so customers know where to send an advance payment)_
 
 **Blocks:** M2 and M3 need at least placeholder-quality answers here to design and
 build real pages against — don't let this stall M0.

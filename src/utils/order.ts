@@ -9,6 +9,8 @@ export interface OrderDetails {
 	contact: string;
 	items: OrderLineItem[];
 	fulfillment: 'Pickup' | 'Dine-in';
+	paymentMethod: 'Cash' | 'GCash';
+	gcashReference?: string;
 	date?: string;
 	time?: string;
 	notes?: string;
@@ -36,6 +38,12 @@ export function buildOrderMessage(order: OrderDetails): string {
 
 	lines.push('');
 	lines.push(`Fulfillment: ${order.fulfillment}`);
+
+	const paymentLine =
+		order.paymentMethod === 'GCash' && order.gcashReference
+			? `Payment: GCash (Ref: ${order.gcashReference})`
+			: `Payment: ${order.paymentMethod}`;
+	lines.push(paymentLine);
 
 	const when = [order.date, order.time].filter(Boolean).join(' ');
 	if (when) {

@@ -12,6 +12,11 @@ describe('site settings', () => {
 	it('defines a real Google Maps link for the pinned location', () => {
 		expect(site.mapsUrl).toMatch(/^https:\/\//);
 	});
+
+	it('defines a GCash number matching the same digits as the phone number', () => {
+		const digitsOnly = (value: string | null) => value?.replace(/\D/g, '') ?? '';
+		expect(digitsOnly(site.gcashNumber)).toBe(digitsOnly(site.phone).replace(/^63/, '0'));
+	});
 });
 
 describe('phoneHref', () => {

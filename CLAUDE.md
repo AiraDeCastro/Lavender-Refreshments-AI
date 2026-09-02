@@ -314,3 +314,16 @@ completes meaningful work, don't rewrite history in it.
   derived-link pattern as `phoneHref`, with a test) and a small "Interested in renting
   the space?" callout with a `mailto:` link on the Amenities/Space page, since that's
   the page about the physical venue.
+
+  Resolved the last open PRD payment-field question: owner chose **both Cash and
+  GCash**, with the Order form capturing this via a Cash/GCash toggle (mirroring the
+  existing Pickup/Dine-in toggle) plus an optional GCash reference number field that
+  only appears once GCash is selected. `OrderDetails` gained `paymentMethod` and
+  `gcashReference`; `buildOrderMessage` appends `Payment: Cash` or `Payment: GCash
+  (Ref: ...)` accordingly, with 5 new Vitest cases. Owner then supplied the real GCash
+  number (0907 277 1354) — confirmed it's the same digits as `site.phone` in local
+  format rather than a separate number, added as `site.gcashNumber`, and surfaced as a
+  hint next to the reference field so customers know where to send an advance payment.
+  Verified in-browser: the reference field is hidden by default, reveals on GCash
+  selection, and the deep-link correctly redirects to real Messenger login
+  infrastructure (didn't sign in — that's the owner's own account).
