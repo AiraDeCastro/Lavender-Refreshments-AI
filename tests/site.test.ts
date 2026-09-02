@@ -17,6 +17,11 @@ describe('site settings', () => {
 		const digitsOnly = (value: string | null) => value?.replace(/\D/g, '') ?? '';
 		expect(digitsOnly(site.gcashNumber)).toBe(digitsOnly(site.phone).replace(/^63/, '0'));
 	});
+
+	it('defines a non-empty entrance fee note', () => {
+		expect(site.entranceFeeNote).toBeTypeOf('string');
+		expect(site.entranceFeeNote?.length).toBeGreaterThan(0);
+	});
 });
 
 describe('phoneHref', () => {

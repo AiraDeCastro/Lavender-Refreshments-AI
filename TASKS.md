@@ -82,6 +82,11 @@ started.
       current. Owner then clarified 2026-09-01 that the restaurant is fully **closed**
       on Mondays (not "call ahead") — `site.ts` and the design canvas both updated to
       "Tue–Sun, 8am–7pm (closed Mondays)"
+- [x] Get the entrance fee policy — surfaced 2026-09-02 while drafting a Facebook reply
+      to a customer inquiry: **₱20 entrance fee for bystanders/tambay, waived for
+      customers who order**. Added as `site.entranceFeeNote` and shown as a fourth item
+      in the Home page's quick info strip (hours/address/Facebook/entrance fee), with a
+      test
 - [x] Confirm existing logo/brand colors, or greenlight a purple palette built from
       scratch — confirmed from the live site: existing logo (`LR_Logo5.png`) and a
       purple/lavender palette already in use (button purple `#7C3AED`, dark section

@@ -349,3 +349,12 @@ completes meaningful work, don't rewrite history in it.
   link, Our Story's staff section, and the full Order flow including the new Cash/
   GCash toggle and validation. **No issues found.** This closes M4's cross-device
   pass — real hardware now confirmed on top of the earlier emulated pass.
+
+  Owner then asked for help drafting a Facebook reply to a customer inquiry, pointing
+  people to the website instead of retyping the full menu each time. Drafting that
+  surfaced a real, previously-unknown business fact: a **₱20 entrance fee for
+  bystanders/tambay, waived for customers who order**. Added as `site.entranceFeeNote`
+  and shown as a fourth item in the Home page's quick info strip, with a test.
+  Also flagged that `lavenderrefreshments.com` still points at the *old* live site
+  (domain cutover hadn't happened yet), so putting that URL in the FB reply would have
+  sent customers to the wrong site — owner confirmed to do the cutover now (see below).

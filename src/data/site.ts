@@ -18,6 +18,11 @@ export const site = {
 	// Same number as `phone` above, in local format — this is the registered GCash
 	// account customers send an advance payment to (2026-09-02).
 	gcashNumber: '0907 277 1354' as string | null,
+	// Charged to bystanders/"tambay" who hang out without ordering; waived for
+	// customers who order (2026-09-02).
+	entranceFeeNote: '₱20 entrance fee for bystanders/tambay (waived if you order)' as
+		| string
+		| null,
 } as const;
 
 // Derived link targets — computed from the fields above so they can't drift out of
