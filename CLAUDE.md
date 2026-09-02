@@ -98,8 +98,11 @@ option — owner confirmed 2026-09-02 **staying on Option A** (Messenger deep-li
 already built and live) for now; Option B's backend stays deferred to M5 until she
 explicitly asks for it. Resolved: existing brand assets confirmed (logo + purple/
 lavender palette already live at lavenderrefreshments.com, see TASKS.md M1).
-Domain/hosting resolved: Cloudflare Pages, domain `lavenderrefreshments.com` already
-registered and live on the owner's Cloudflare account. Facebook Page confirmed:
+Domain/hosting resolved: Cloudflare Pages/Workers for this project, domain
+`lavenderrefreshments.com` registered with Cloudflare as registrar/DNS. (Note: "live
+on the owner's Cloudflare account" originally meant DNS-only — the old site itself was
+actually hosted on Vercel via an unproxied CNAME, discovered during the 2026-09-02
+domain cutover; see TASKS.md M4.) Facebook Page confirmed:
 https://www.facebook.com/profile.php?id=100076299965269 ("Lavender refreshment") — the
 live site's only link was a Group, which can't receive `m.me` deep links; the Page is
 what the Option A order flow will use. Full menu (72 items) confirmed and loaded, see
@@ -358,3 +361,16 @@ completes meaningful work, don't rewrite history in it.
   Also flagged that `lavenderrefreshments.com` still points at the *old* live site
   (domain cutover hadn't happened yet), so putting that URL in the FB reply would have
   sent customers to the wrong site — owner confirmed to do the cutover now (see below).
+
+  Domain cutover: owner exported the zone's DNS records, which revealed the old site
+  was actually hosted on **Vercel** (an unproxied CNAME to `95e4c31464bf48f5.vercel-
+  dns-017.com`), not Cloudflare Pages as earlier notes assumed — Cloudflare was only
+  ever the domain's registrar/DNS. Walked her through her Cloudflare dashboard (no CLI
+  access, same pattern as the earlier image-404 incident): delete the conflicting
+  Vercel CNAME under DNS → Records, then add `lavenderrefreshments.com` as a Custom
+  Domain under Workers & Pages → `lavender-refreshments-ai` → Settings → Domains &
+  Routes. First attempt failed ("already has externally managed DNS records") until
+  the manual delete step; second attempt succeeded with SSL auto-provisioned. Verified
+  live myself afterward rather than just trusting her report — Home and Order both
+  serve current content at `https://lavenderrefreshments.com` with no cert warnings.
+  **The real domain is now live with the actual site — M4's domain cutover is done.**

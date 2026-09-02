@@ -38,7 +38,9 @@ started.
       done, deliberately:** pointing the real `lavenderrefreshments.com` domain at
       this project — that's an M4 (soft launch) step, since the real domain is still
       serving the current live site and shouldn't be swapped until this one has real
-      content
+      content. _(Done 2026-09-02 — see M4's domain cutover item; turned out the
+      previous "Cloudflare Pages" assumption below was wrong, the old site was
+      actually on Vercel)_
 
 ## M1 — Content & assets _(depends on the restaurant owner, not on code)_
 
@@ -276,9 +278,19 @@ instead of letting deploys fetch an unpinned version fresh via `npx` each time.
       leftover placeholder/TODO markers as of 2026-09-01, before the real Our Story
       write-up arrived (that placeholder was the only one found, and is now resolved
       — see M1); nothing else outstanding
-- [ ] Point the confirmed domain at the host, verify SSL — **needs the owner**: this
-      swaps their currently-live site for this one, so it shouldn't happen without them
-      present/aware
+- [x] Point the confirmed domain at the host, verify SSL — done 2026-09-02. Discovered
+      the domain's actual prior setup didn't match what M1 had recorded: DNS
+      (nameservers) were on Cloudflare, but the root record was a CNAME pointing to
+      **Vercel** (`95e4c31464bf48f5.vercel-dns-017.com`, unproxied) — the old live site
+      was Vercel-hosted, not Cloudflare Pages as previously assumed. Walked the owner
+      through her Cloudflare dashboard (she has no CLI access): delete the conflicting
+      Vercel CNAME under DNS → Records, then add `lavenderrefreshments.com` as a
+      Custom Domain under Workers & Pages → `lavender-refreshments-ai` → Settings →
+      Domains & Routes. Went through cleanly with SSL auto-provisioned. Verified live
+      myself post-cutover (not just trusting the owner's report): Home and Order pages
+      both serve current content at `https://lavenderrefreshments.com` with no
+      certificate warnings, entrance fee note and GCash toggle both present, confirming
+      it's this project and not a cached/stale response
 - [ ] Soft launch to a small group before a public announcement — **owner's call**
 - [ ] Set up analytics (optional — e.g. Plausible or Cloudflare Web Analytics) if the
       owner wants to track the PRD's success metrics — **owner's decision** on whether
