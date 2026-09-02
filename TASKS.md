@@ -226,16 +226,20 @@ instead of letting deploys fetch an unpinned version fresh via `npx` each time.
       clean, complete, correctly-formatted message. Confirms the Page ID is wired
       correctly. Only done from a desktop browser — still worth a real tap-through on
       an actual iOS/Android phone before launch, since that's the real customer path
-- [ ] Mobile performance check on a throttled connection (Lighthouse mobile score) —
-      no Lighthouse tooling available in this environment, so no official score yet, but
-      pulled real numbers directly from the live site instead of relying only on the
-      build-log signal: Home is 7 requests / ~333KB total fully loaded; Menu (the
-      heaviest page, 72 items + 7 Bilao photos) is 12 requests / ~137KB. Both light for
-      a photography-driven site, and all images confirmed loading correctly (proper
-      crop/aspect ratio too). These numbers were taken on this environment's own
-      connection, not a simulated throttled one, so they're a real but partial signal —
-      **still worth 2 minutes on** [PageSpeed Insights](https://pagespeed.web.dev/)
-      **against the live URL** for an authoritative mobile score before launch
+- [x] Mobile performance check on a throttled connection (Lighthouse mobile score) —
+      no Lighthouse tooling in this environment, so ran the live URL through
+      [PageSpeed Insights](https://pagespeed.web.dev/) directly (real Lighthouse,
+      Moto G Power emulation, Slow 4G throttling) instead. First run: **91 performance /
+      100 accessibility / 96 best practices / 100 SEO**, with two flagged issues: ~1.9s
+      of render-blocking delay from the Google Fonts stylesheet, and 222 KiB of
+      oversized images (two photos fetched at a fixed 1400px width for every device,
+      including phones). Fixed both — moved the font `<link>` to load asynchronously
+      (media="print" + onload swap, standard pattern) and added real `widths`/`sizes`
+      srcsets to the two oversized images so phones download a properly-sized variant.
+      Re-ran after each fix to confirm on the live site, not just assumed: **final score
+      93 / 100 / 96 / 100**, image waste down to 92 KiB, render-blocking fully resolved.
+      Remaining 92 KiB is a smaller, lower-priority further-optimization opportunity,
+      not a real problem
 - [x] Verify every link — map, Facebook Page, phone number — actually resolves — found
       and fixed a real gap: phone number and address were plain text, not links.
       Added a real `tel:` link and a Google Maps link (derived from the real
