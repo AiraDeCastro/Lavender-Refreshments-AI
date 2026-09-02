@@ -342,3 +342,10 @@ completes meaningful work, don't rewrite history in it.
   fully-built default — just documentation closing out the decision. Only the
   language-mix question (an explicit v1.1 candidate, not a v1 blocker) remains open
   from the original PRD list.
+
+  Owner then ran the real physical-device check (text-only walkthrough from me, since
+  I can't hold her phone myself) against the live site — nav/hamburger, photo
+  sharpness, Home's tel/maps links, the full Menu, Amenities' gallery and rental-email
+  link, Our Story's staff section, and the full Order flow including the new Cash/
+  GCash toggle and validation. **No issues found.** This closes M4's cross-device
+  pass — real hardware now confirmed on top of the earlier emulated pass.

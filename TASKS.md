@@ -231,12 +231,14 @@ instead of letting deploys fetch an unpinned version fresh via `npx` each time.
 
 ## M4 — QA & soft launch
 
-- [ ] Cross-device pass: iOS Safari, Android Chrome, desktop — verified in an emulated
+- [x] Cross-device pass: iOS Safari, Android Chrome, desktop — verified in an emulated
       mobile width (375px) and desktop width across all 5 pages (Home, Menu, Amenities,
-      Our Story, Order): hamburger menu, image loading, and layout all correct. **Not
-      yet done: a real iOS Safari / Android Chrome pass on physical devices** — emulation
-      can't catch everything (e.g. real Safari quirks), so this still needs a phone-in-hand
-      check before public launch
+      Our Story, Order): hamburger menu, image loading, and layout all correct. Owner
+      then ran a full real-device pass 2026-09-02 on her own phone against the live
+      site (nav/hamburger on every page, photo sharpness, Home CTAs/tel/maps links,
+      full Menu scroll, Amenities gallery + rental-email link, Our Story + Meet the
+      Team section, and the full Order flow incl. the new Cash/GCash toggle, invalid
+      phone/time validation, and the real Messenger handoff) — **no issues found**
 - [x] End-to-end order test — confirm the Messenger deep-link produces a correct,
       readable prefilled message on both iOS and Android — tested for real against live
       Facebook infrastructure (not a mock): filled out the form (items incl. an "Ask
