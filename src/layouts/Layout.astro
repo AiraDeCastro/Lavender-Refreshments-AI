@@ -26,10 +26,28 @@ const ogImageSrc = new URL(getPhoto(ogImage).src, Astro.site ?? Astro.url.origin
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		{
+			/*
+				A plain <link rel="stylesheet"> still blocks rendering until it loads, even
+				though the browser now discovers it immediately (see the perf commit that added
+				these tags) — Lighthouse measured this specific request at ~750ms of that block on
+				a throttled connection. The media="print" + onload swap is the standard pattern
+				for loading a non-critical stylesheet without blocking first paint; <noscript>
+				covers the no-JS case.
+			*/
+		}
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap"
+			media="print"
+			onload="this.media='all'"
 		/>
+		<noscript>
+			<link
+				rel="stylesheet"
+				href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap"
+			/>
+		</noscript>
 
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={pageTitle} />
