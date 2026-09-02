@@ -20,3 +20,10 @@ export const storyFrontmatterSchema = z.object({
 	title: z.string(),
 	coverPhoto: z.string().optional(),
 });
+
+export const staffMemberSchema = z.object({
+	id: z.string(),
+	name: z.string(),
+	position: z.string(),
+	photo: z.string().optional(),
+});

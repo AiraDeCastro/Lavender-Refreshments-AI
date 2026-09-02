@@ -2,11 +2,13 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import StaffCard from '../components/StaffCard.astro';
 import { getPhoto } from '../utils/photos';
 
 const [story] = await getCollection('story');
 const { Content } = await render(story);
 const founderPhoto = story.data.coverPhoto ? getPhoto(story.data.coverPhoto) : null;
+const staff = await getCollection('staff');
 ---
 
 <Layout
@@ -40,6 +42,20 @@ const founderPhoto = story.data.coverPhoto ? getPhoto(story.data.coverPhoto) : n
 			<div class="story-content px-6 py-8 lg:px-0 lg:py-0">
 				<Content />
 			</div>
+		</div>
+	</div>
+
+	<div class="mx-auto max-w-[1160px] px-6 py-9 lg:px-10 lg:py-14">
+		<div class="flex flex-col gap-1.5 text-center">
+			<h2 class="text-[22px] font-extrabold text-brand-950 lg:text-[28px]">Meet the Team</h2>
+			<p class="text-sm text-brand-700">The people who make the Purple House feel like home.</p>
+		</div>
+		<div class="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
+			{
+				staff.map((member) => (
+					<StaffCard name={member.data.name} position={member.data.position} photo={member.data.photo} />
+				))
+			}
 		</div>
 	</div>
 

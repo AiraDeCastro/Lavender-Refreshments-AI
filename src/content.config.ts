@@ -3,6 +3,7 @@ import { file, glob } from 'astro/loaders';
 import {
 	amenitySchema,
 	menuItemSchema,
+	staffMemberSchema,
 	storyFrontmatterSchema,
 } from './content/schemas';
 
@@ -21,4 +22,9 @@ const story = defineCollection({
 	schema: storyFrontmatterSchema,
 });
 
-export const collections = { menu, amenities, story };
+const staff = defineCollection({
+	loader: file('src/content/staff.yaml'),
+	schema: staffMemberSchema,
+});
+
+export const collections = { menu, amenities, story, staff };

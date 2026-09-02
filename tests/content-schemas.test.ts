@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
 	amenitySchema,
 	menuItemSchema,
+	staffMemberSchema,
 	storyFrontmatterSchema,
 } from '../src/content/schemas';
 
@@ -86,6 +87,35 @@ describe('amenitySchema', () => {
 			id: 'sample-amenity',
 			title: 'Indoor Seating',
 			caption: 'A quiet corner by the window.',
+		});
+		expect(result.success).toBe(false);
+	});
+});
+
+describe('staffMemberSchema', () => {
+	it('accepts a well-formed staff entry without a photo', () => {
+		const result = staffMemberSchema.safeParse({
+			id: 'sample-staff',
+			name: 'Sample Person',
+			position: 'Server',
+		});
+		expect(result.success).toBe(true);
+	});
+
+	it('accepts a staff entry with a photo once one is added', () => {
+		const result = staffMemberSchema.safeParse({
+			id: 'sample-staff',
+			name: 'Sample Person',
+			position: 'Server',
+			photo: 'sample-staff.jpg',
+		});
+		expect(result.success).toBe(true);
+	});
+
+	it('rejects an entry missing the position', () => {
+		const result = staffMemberSchema.safeParse({
+			id: 'sample-staff',
+			name: 'Sample Person',
 		});
 		expect(result.success).toBe(false);
 	});
