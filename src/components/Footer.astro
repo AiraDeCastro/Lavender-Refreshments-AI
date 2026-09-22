@@ -63,8 +63,8 @@ const links = [
 				<div class="mb-1 hidden text-[12px] font-extrabold tracking-[0.08em] text-brand-400 uppercase lg:block">
 					Navigate
 				</div>
-				<div class="flex flex-wrap justify-center gap-4.5 text-[13px] font-semibold lg:flex-col lg:gap-2 lg:text-[14px]">
-					{links.map((link) => <a href={link.href}>{link.label}</a>)}
+				<div class="flex flex-wrap justify-center gap-4.5 text-[13px] font-semibold text-brand-100 lg:flex-col lg:gap-2 lg:text-[14px]">
+					{links.map((link) => <a href={link.href} class="hover:text-white">{link.label}</a>)}
 				</div>
 			</div>
 		</div>
