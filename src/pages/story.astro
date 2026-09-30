@@ -8,6 +8,7 @@ import { getPhoto } from '../utils/photos';
 const [story] = await getCollection('story');
 const { Content } = await render(story);
 const founderPhoto = story.data.coverPhoto ? getPhoto(story.data.coverPhoto) : null;
+const founderPhotoSquare = story.data.coverPhoto ? getPhoto('founder-photo-square.jpg') : null;
 const staff = await getCollection('staff');
 ---
 
@@ -32,10 +33,22 @@ const staff = await getCollection('staff');
 					<Image
 						src={founderPhoto}
 						alt="The founder of Lavender Refreshments"
-						width={576}
+						width={768}
 						height={1024}
 						densities={[1, 2]}
-						class="h-auto w-full object-contain lg:sticky lg:top-6 lg:rounded-3xl"
+						class="h-auto w-full object-cover lg:hidden"
+					/>
+				)
+			}
+			{
+				founderPhotoSquare && (
+					<Image
+						src={founderPhotoSquare}
+						alt="The founder of Lavender Refreshments"
+						width={800}
+						height={800}
+						densities={[1, 2]}
+						class="hidden h-auto w-full object-cover lg:sticky lg:top-6 lg:block lg:rounded-3xl"
 					/>
 				)
 			}
