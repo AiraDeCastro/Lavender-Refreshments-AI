@@ -5,10 +5,6 @@
   name: 'Tito Pogi'
   position: 'Cook/Cashier'
   photo: 'tito-pogi.jpg'
-- id: makoy
-  name: 'Makoy'
-  position: 'Assistant Cook/Server'
-  photo: 'makoy.jpg'
 - id: inday
   name: 'Inday'
   position: 'Manager'

@@ -34,7 +34,7 @@ Every year, I saved money and made sure I had a budget for Purple House. Every y
 
 Along the way, we also started a small business. We opened a small refreshments business serving our special Batchoy and Lomi. I also added a small shop selling women's, men's, and children's clothing, gowns, bags, and shoes.
 
-Today, two of the bedrooms are available for Airbnb guests, allowing other people to experience and enjoy the home that was once only a dream in my heart. I am also very grateful to have six trustworthy and hardworking staff members who have been part of this journey with me.
+Today, two of the bedrooms are available for Airbnb guests, allowing other people to experience and enjoy the home that was once only a dream in my heart. I am also very grateful to have five trustworthy and hardworking staff members who have been part of this journey with me.
 
 ## What the Name Means
 

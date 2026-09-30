@@ -73,7 +73,10 @@ started.
       mapping); Nhoy Leony's photo is still pending, so his card correctly still shows
       the "NL" initials fallback. Confirmed the owner herself is the founder, not the
       user (Aira) — she is intentionally not listed in this section since it's scoped to
-      customer-facing restaurant staff
+      customer-facing restaurant staff. Owner confirmed 2026-09-30 **Makoy quit** —
+      removed his `staff.yaml` entry and photo file, and updated the founder narrative
+      in `story.md` from "six ... staff members" to "five" to match (her own words,
+      just the count corrected per her confirmation)
 - [x] Confirm hours, address, phone number, and the Facebook Page URL/handle — Facebook
       **Page** confirmed 2026-08-30: https://www.facebook.com/profile.php?id=100076299965269
       ("Lavender refreshment", verified as a real Page, not the Group linked from the
