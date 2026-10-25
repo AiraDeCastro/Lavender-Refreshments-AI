@@ -1,6 +1,4 @@
 # Real staff roster, provided by the owner 2026-09-02 (see TASKS.md, milestone M1).
-# Nhoy Leony's photo is still pending (owner sending it separately) — leave photo
-# unset for him rather than inventing a placeholder image.
 - id: inday
   name: 'Inday'
   position: 'Manager'
@@ -20,3 +18,4 @@
 - id: nhoy-leony
   name: 'Nhoy Leony'
   position: 'Maintenance Manager'
+  photo: 'nhoy-leony.jpg'

@@ -81,8 +81,9 @@ started.
       updated the story count to match. Same day: added **Fatima (Server)** with her
       photo (story count back to "five"), and enlarged the staff photos (100/120px
       to 130/170px, grid 6 to 5 columns on desktop). Roster now: Inday, Dalia,
-      Fatima, Nang Ana, Nhoy Leony. Nhoy Leony still has no photo; owner sent a
-      two-person group photo and which person is him still needs confirming
+      Fatima, Nang Ana, Nhoy Leony. Nhoy Leony's photo arrived as a two-person group
+      shot; owner confirmed he is the man in the cap, so it's cropped to him alone
+      (`nhoy-leony.jpg`). All five staff now have photos
 - [x] Confirm hours, address, phone number, and the Facebook Page URL/handle — Facebook
       **Page** confirmed 2026-08-30: https://www.facebook.com/profile.php?id=100076299965269
       ("Lavender refreshment", verified as a real Page, not the Group linked from the
