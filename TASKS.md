@@ -76,7 +76,13 @@ started.
       customer-facing restaurant staff. Owner confirmed 2026-09-30 **Makoy quit** —
       removed his `staff.yaml` entry and photo file, and updated the founder narrative
       in `story.md` from "six ... staff members" to "five" to match (her own words,
-      just the count corrected per her confirmation)
+      just the count corrected per her confirmation). Owner then asked 2026-10-25 to
+      remove **Tito Pogi** too — removed his `staff.yaml` entry and photo, and
+      updated the story count to match. Same day: added **Fatima (Server)** with her
+      photo (story count back to "five"), and enlarged the staff photos (100/120px
+      to 130/170px, grid 6 to 5 columns on desktop). Roster now: Inday, Dalia,
+      Fatima, Nang Ana, Nhoy Leony. Nhoy Leony still has no photo; owner sent a
+      two-person group photo and which person is him still needs confirming
 - [x] Confirm hours, address, phone number, and the Facebook Page URL/handle — Facebook
       **Page** confirmed 2026-08-30: https://www.facebook.com/profile.php?id=100076299965269
       ("Lavender refreshment", verified as a real Page, not the Group linked from the

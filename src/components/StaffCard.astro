@@ -25,13 +25,13 @@ const initials = name
 			<Image
 				src={photoAsset}
 				alt={name}
-				width={160}
-				height={160}
+				width={200}
+				height={200}
 				densities={[1, 2, 3]}
-				class="h-[100px] w-[100px] rounded-full object-cover lg:h-[120px] lg:w-[120px]"
+				class="h-[130px] w-[130px] rounded-full object-cover lg:h-[170px] lg:w-[170px]"
 			/>
 		) : (
-			<div class="flex h-[100px] w-[100px] items-center justify-center rounded-full bg-brand-100 text-2xl font-extrabold text-brand-700 lg:h-[120px] lg:w-[120px]">
+			<div class="flex h-[130px] w-[130px] items-center justify-center rounded-full bg-brand-100 text-3xl font-extrabold text-brand-700 lg:h-[170px] lg:w-[170px] lg:text-4xl">
 				{initials}
 			</div>
 		)

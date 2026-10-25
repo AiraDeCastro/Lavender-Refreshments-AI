@@ -1,10 +1,6 @@
 # Real staff roster, provided by the owner 2026-09-02 (see TASKS.md, milestone M1).
 # Nhoy Leony's photo is still pending (owner sending it separately) — leave photo
 # unset for him rather than inventing a placeholder image.
-- id: tito-pogi
-  name: 'Tito Pogi'
-  position: 'Cook/Cashier'
-  photo: 'tito-pogi.jpg'
 - id: inday
   name: 'Inday'
   position: 'Manager'
@@ -13,6 +9,10 @@
   name: 'Dalia'
   position: 'Server'
   photo: 'dalia.jpg'
+- id: fatima
+  name: 'Fatima'
+  position: 'Server'
+  photo: 'fatima.jpg'
 - id: nang-ana
   name: 'Nang Ana'
   position: 'Shein Shop Salesperson'

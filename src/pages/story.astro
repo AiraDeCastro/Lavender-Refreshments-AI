@@ -50,7 +50,7 @@ const staff = await getCollection('staff');
 			<h2 class="text-[22px] font-extrabold text-brand-950 lg:text-[28px]">Meet the Team</h2>
 			<p class="text-sm text-brand-700">The people who make the Purple House feel like home.</p>
 		</div>
-		<div class="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
+		<div class="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
 			{
 				staff.map((member) => (
 					<StaffCard name={member.data.name} position={member.data.position} photo={member.data.photo} />
